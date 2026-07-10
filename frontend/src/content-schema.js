@@ -1,0 +1,64 @@
+// Define aquí los campos editables desde /admin. Cada key debe existir también
+// en backend/schema.sql (tabla site_content) con su valor por defecto.
+export const CONTENT_SCHEMA = [
+  {
+    section: 'Empresa',
+    fields: [
+      { key: 'company_name', label: 'Nombre de la empresa', type: 'text' },
+      { key: 'company_tagline', label: 'Eslogan corto', type: 'text' },
+    ],
+  },
+  {
+    section: 'Hero (portada)',
+    fields: [
+      { key: 'hero_title', label: 'Título principal', type: 'text' },
+      { key: 'hero_subtitle', label: 'Subtítulo', type: 'textarea' },
+      { key: 'hero_image', label: 'Imagen de fondo', type: 'image' },
+    ],
+  },
+  {
+    section: 'Nosotros',
+    fields: [
+      { key: 'about_title', label: 'Título', type: 'text' },
+      { key: 'about_text', label: 'Descripción', type: 'textarea' },
+      { key: 'about_image', label: 'Imagen', type: 'image' },
+    ],
+  },
+  {
+    section: 'Servicios',
+    fields: [
+      { key: 'service_1_title', label: 'Servicio 1 · título', type: 'text' },
+      { key: 'service_1_text', label: 'Servicio 1 · descripción', type: 'textarea' },
+      { key: 'service_2_title', label: 'Servicio 2 · título', type: 'text' },
+      { key: 'service_2_text', label: 'Servicio 2 · descripción', type: 'textarea' },
+      { key: 'service_3_title', label: 'Servicio 3 · título', type: 'text' },
+      { key: 'service_3_text', label: 'Servicio 3 · descripción', type: 'textarea' },
+    ],
+  },
+  {
+    section: 'Proyectos',
+    fields: [
+      { key: 'project_1_title', label: 'Proyecto 1 · título', type: 'text' },
+      { key: 'project_1_text', label: 'Proyecto 1 · descripción', type: 'textarea' },
+      { key: 'project_1_image', label: 'Proyecto 1 · imagen', type: 'image' },
+      { key: 'project_2_title', label: 'Proyecto 2 · título', type: 'text' },
+      { key: 'project_2_text', label: 'Proyecto 2 · descripción', type: 'textarea' },
+      { key: 'project_2_image', label: 'Proyecto 2 · imagen', type: 'image' },
+      { key: 'project_3_title', label: 'Proyecto 3 · título', type: 'text' },
+      { key: 'project_3_text', label: 'Proyecto 3 · descripción', type: 'textarea' },
+      { key: 'project_3_image', label: 'Proyecto 3 · imagen', type: 'image' },
+    ],
+  },
+  {
+    section: 'Contacto',
+    fields: [
+      { key: 'contact_email', label: 'Email que recibe los mensajes', type: 'text' },
+      { key: 'contact_phone', label: 'Teléfono', type: 'text' },
+      { key: 'contact_address', label: 'Dirección', type: 'text' },
+    ],
+  },
+  {
+    section: 'Pie de página',
+    fields: [{ key: 'footer_text', label: 'Texto de pie de página', type: 'text' }],
+  },
+]

@@ -1,0 +1,11 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Backend: nunca subir credenciales ni imágenes reales de producción
+backend/config.php
+backend/uploads/
+
+# Sistema
+.DS_Store
+Thumbs.db

@@ -1,0 +1,13 @@
+# Este archivo se copia automáticamente a dist/ en cada build (npm run build)
+# y debe quedar en la raíz de public_html cuando subas el build a cPanel.
+# Hace que las rutas de React Router (ej: /admin) funcionen recargando la página.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # No reescribir si el archivo/carpeta pedido existe realmente (assets, api/, uploads/)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
