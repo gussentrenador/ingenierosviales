@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { CONTENT_SCHEMA } from '../content-schema'
 import { useContent } from '../context/ContentContext'
 import { useAuth } from '../context/AuthContext'
-import api, { assetUrl } from '../api/client'
+import api from '../api/client'
+import ImageField from '../components/admin/ImageField'
 
 export default function AdminDashboard() {
   const { content, reload } = useContent()
@@ -12,6 +13,7 @@ export default function AdminDashboard() {
 
   const [values, setValues] = useState({})
   const [uploading, setUploading] = useState(null)
+  const [uploadErrors, setUploadErrors] = useState({})
   const [saveState, setSaveState] = useState('idle') // idle | saving | ok | error
 
   useEffect(() => {
@@ -23,15 +25,18 @@ export default function AdminDashboard() {
   const handleImageChange = async (key, file) => {
     if (!file) return
     setUploading(key)
+    setUploadErrors((e) => ({ ...e, [key]: null }))
     const formData = new FormData()
     formData.append('image', file)
     try {
-      const res = await api.post('/upload.php', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      })
+      // Importante: no fijar el header Content-Type a mano — axios/el navegador
+      // debe generar el boundary del multipart automáticamente, o el backend
+      // recibe el archivo vacío.
+      const res = await api.post('/upload.php', formData)
       setField(key, res.data.path)
-    } catch {
-      alert('No se pudo subir la imagen.')
+    } catch (err) {
+      const message = err.response?.data?.error || 'No se pudo subir la imagen. Intenta nuevamente.'
+      setUploadErrors((e) => ({ ...e, [key]: message }))
     } finally {
       setUploading(null)
     }
@@ -75,7 +80,9 @@ export default function AdminDashboard() {
             <div className="space-y-4">
               {group.fields.map((field) => (
                 <div key={field.key}>
-                  <label className="block text-sm font-medium text-slate-700">{field.label}</label>
+                  {field.type !== 'image' && (
+                    <label className="block text-sm font-medium text-slate-700">{field.label}</label>
+                  )}
 
                   {field.type === 'textarea' && (
                     <textarea
@@ -95,22 +102,15 @@ export default function AdminDashboard() {
                   )}
 
                   {field.type === 'image' && (
-                    <div className="mt-1 flex items-center gap-4">
-                      {values[field.key] && (
-                        <img
-                          src={assetUrl(values[field.key])}
-                          alt={field.label}
-                          className="h-16 w-24 rounded object-cover"
-                        />
-                      )}
-                      <input
-                        type="file"
-                        accept="image/*"
-                        disabled={uploading === field.key}
-                        onChange={(e) => handleImageChange(field.key, e.target.files[0])}
-                        className="text-sm"
+                    <div className="mt-1">
+                      <ImageField
+                        section={group.section}
+                        label={field.label}
+                        value={values[field.key]}
+                        uploading={uploading === field.key}
+                        error={uploadErrors[field.key]}
+                        onChange={(file) => handleImageChange(field.key, file)}
                       />
-                      {uploading === field.key && <span className="text-xs text-slate-500">Subiendo…</span>}
                     </div>
                   )}
                 </div>
