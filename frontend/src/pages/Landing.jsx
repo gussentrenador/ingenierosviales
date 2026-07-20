@@ -1,6 +1,8 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
+import StatsBar from '../components/StatsBar'
 import Nosotros from '../components/Nosotros'
+import WhyUs from '../components/WhyUs'
 import Servicios from '../components/Servicios'
 import Proyectos from '../components/Proyectos'
 import Contacto from '../components/Contacto'
@@ -11,7 +13,11 @@ export default function Landing() {
   const { loading, error } = useContent()
 
   if (loading) {
-    return <div className="flex min-h-screen items-center justify-center text-slate-500">Cargando…</div>
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-slate-950 text-slate-400">
+        Cargando…
+      </div>
+    )
   }
 
   return (
@@ -21,7 +27,9 @@ export default function Landing() {
       )}
       <Navbar />
       <Hero />
+      <StatsBar />
       <Nosotros />
+      <WhyUs />
       <Servicios />
       <Proyectos />
       <Contacto />

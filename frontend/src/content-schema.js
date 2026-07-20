@@ -17,6 +17,19 @@ export const CONTENT_SCHEMA = [
     ],
   },
   {
+    section: 'Estadísticas (franja de confianza)',
+    fields: [
+      { key: 'stat_1_value', label: 'Estadística 1 · valor (ej: 15+)', type: 'text' },
+      { key: 'stat_1_label', label: 'Estadística 1 · etiqueta', type: 'text' },
+      { key: 'stat_2_value', label: 'Estadística 2 · valor', type: 'text' },
+      { key: 'stat_2_label', label: 'Estadística 2 · etiqueta', type: 'text' },
+      { key: 'stat_3_value', label: 'Estadística 3 · valor', type: 'text' },
+      { key: 'stat_3_label', label: 'Estadística 3 · etiqueta', type: 'text' },
+      { key: 'stat_4_value', label: 'Estadística 4 · valor', type: 'text' },
+      { key: 'stat_4_label', label: 'Estadística 4 · etiqueta', type: 'text' },
+    ],
+  },
+  {
     section: 'Nosotros',
     fields: [
       { key: 'about_title', label: 'Título', type: 'text' },
