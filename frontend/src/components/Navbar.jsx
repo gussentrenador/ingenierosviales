@@ -49,12 +49,14 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a
-          href="#contacto"
-          className="hidden rounded-md bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition-all hover:bg-amber-400 hover:shadow-amber-500/30 sm:inline-block"
-        >
-          Cotiza tu proyecto
-        </a>
+        {content.show_contact_cta !== '0' && (
+          <a
+            href="#contacto"
+            className="hidden rounded-md bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition-all hover:bg-amber-400 hover:shadow-amber-500/30 sm:inline-block"
+          >
+            Contáctanos
+          </a>
+        )}
 
         <button
           type="button"
@@ -83,15 +85,17 @@ export default function Navbar() {
               </a>
             </li>
           ))}
-          <li>
-            <a
-              href="#contacto"
-              onClick={() => setOpen(false)}
-              className="mt-2 block rounded-md bg-amber-500 px-4 py-3 text-center font-semibold text-slate-950"
-            >
-              Cotiza tu proyecto
-            </a>
-          </li>
+          {content.show_contact_cta !== '0' && (
+            <li>
+              <a
+                href="#contacto"
+                onClick={() => setOpen(false)}
+                className="mt-2 block rounded-md bg-amber-500 px-4 py-3 text-center font-semibold text-slate-950"
+              >
+                Contáctanos
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     </header>

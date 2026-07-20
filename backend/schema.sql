@@ -20,6 +20,7 @@ INSERT INTO site_content (content_key, content_value) VALUES
     ('hero_title', 'Ingeniería vial con precisión y resultados'),
     ('hero_subtitle', 'Diseñamos, pavimentamos y supervisamos obras viales con los más altos estándares de calidad y seguridad.'),
     ('hero_image', ''),
+    ('show_contact_cta', '1'),
     ('stat_1_value', '15+'),
     ('stat_1_label', 'Años de experiencia'),
     ('stat_2_value', '120+'),

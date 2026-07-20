@@ -26,7 +26,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-28 pb-40 text-center">
         <span className="animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber-400">
           <CompassIcon className="h-4 w-4" />
-          Ingeniería vial &amp; obras civiles
+          Ingeniería vial y obras viales
         </span>
 
         <h1
@@ -48,13 +48,15 @@ export default function Hero() {
           className="animate-fade-in-up mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           style={{ animationDelay: '360ms' }}
         >
-          <a
-            href="#contacto"
-            className="group inline-flex items-center gap-2 rounded-md bg-amber-500 px-7 py-3.5 font-semibold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-400 hover:shadow-amber-400/30"
-          >
-            Solicitar cotización
-            <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </a>
+          {content.show_contact_cta !== '0' && (
+            <a
+              href="#contacto"
+              className="group inline-flex items-center gap-2 rounded-md bg-amber-500 px-7 py-3.5 font-semibold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-400 hover:shadow-amber-400/30"
+            >
+              Contáctanos
+              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          )}
           <a
             href="#proyectos"
             className="inline-flex items-center gap-2 rounded-md border border-white/25 px-7 py-3.5 font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/5"
