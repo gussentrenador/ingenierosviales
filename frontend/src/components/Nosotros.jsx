@@ -4,9 +4,9 @@ import { CheckIcon } from './icons'
 import Reveal from './Reveal'
 
 const HIGHLIGHTS = [
-  'Equipo de ingenieros y proyectistas certificados',
-  'Cumplimiento normativo y de plazos comprometidos',
-  'Tecnología de topografía y control de calidad',
+  'Más de 30 años de experiencia en carreteras, puentes y aeropuertos',
+  'Experiencia en sector público y privado',
+  'Amplia red de contactos: concesionarias, Dirección de Vialidad y aeropuertos',
 ]
 
 export default function Nosotros() {
@@ -29,7 +29,7 @@ export default function Nosotros() {
             </div>
             <div className="absolute -bottom-6 -right-6 hidden rounded-xl bg-amber-500 px-6 py-4 text-slate-950 shadow-lg sm:block">
               <p className="font-display text-3xl font-extrabold leading-none">
-                {content.stat_1_value || '15+'}
+                {content.stat_1_value || '30+'}
               </p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-wide">Años de trayectoria</p>
             </div>
@@ -45,7 +45,7 @@ export default function Nosotros() {
           </h2>
           <p className="mt-5 leading-relaxed text-slate-600">
             {content.about_text ||
-              'Somos una empresa de ingeniería vial con años de experiencia entregando soluciones técnicas confiables para clientes exigentes, desde el diseño hasta la ejecución y supervisión de obra.'}
+              'Profesionales del área vial con más de 30 años de experiencia en carreteras, puentes y aeropuertos, en el sector público y privado. Liderados por Orlando Maluenda Rojas, Ingeniero Civil Químico y Consultor Líder.'}
           </p>
 
           <ul className="mt-7 space-y-3">

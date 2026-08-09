@@ -2,7 +2,7 @@ import { useContent } from '../context/ContentContext'
 import StatCounter from './StatCounter'
 
 const DEFAULTS = [
-  { value: '15+', label: 'Años de experiencia' },
+  { value: '30+', label: 'Años de experiencia' },
   { value: '120+', label: 'Proyectos ejecutados' },
   { value: '98%', label: 'Clientes satisfechos' },
   { value: '40+', label: 'Profesionales certificados' },

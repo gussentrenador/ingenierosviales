@@ -54,7 +54,7 @@ export default function Navbar() {
             href="#contacto"
             className="hidden rounded-md bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition-all hover:bg-amber-400 hover:shadow-amber-500/30 sm:inline-block"
           >
-            Contáctanos
+            Contacto
           </a>
         )}
 
@@ -92,7 +92,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="mt-2 block rounded-md bg-amber-500 px-4 py-3 text-center font-semibold text-slate-950"
               >
-                Contáctanos
+                Contacto
               </a>
             </li>
           )}

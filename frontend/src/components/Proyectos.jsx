@@ -5,9 +5,24 @@ import Reveal from './Reveal'
 export default function Proyectos() {
   const { content } = useContent()
 
+  const DEFAULTS = [
+    {
+      title: 'Conservaciones Viales Periódicas',
+      text: 'Tratamientos superficiales dobles y reposición de pavimentos asfálticos en calzadas y bermas, con bacheos, sellado de grietas, señalización y demarcación.',
+    },
+    {
+      title: 'Obras en Autopistas Concesionadas',
+      text: 'Desnivelación de enlaces viales en Ruta 5 Norte y Sur, y reposición de pavimentos de hormigón en calzadas de autopistas concesionadas.',
+    },
+    {
+      title: 'Obras en Aeropuertos',
+      text: 'Reparación y ensanche de pistas de rodado y pista principal mediante fresado, nueva base granular y pavimento asfáltico.',
+    },
+  ]
+
   const projects = [1, 2, 3].map((n) => ({
-    title: content[`project_${n}_title`] || `Proyecto ${n}`,
-    text: content[`project_${n}_text`] || 'Descripción breve del proyecto.',
+    title: content[`project_${n}_title`] || DEFAULTS[n - 1].title,
+    text: content[`project_${n}_text`] || DEFAULTS[n - 1].text,
     image: assetUrl(content[`project_${n}_image`]),
   }))
 

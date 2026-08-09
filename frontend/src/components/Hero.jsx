@@ -13,7 +13,7 @@ export default function Hero() {
           <img
             src={bg}
             alt=""
-            className="animate-ken-burns h-full w-full object-cover"
+            className="animate-ken-burns h-full w-full object-cover opacity-80"
             fetchPriority="high"
           />
         ) : (
@@ -53,7 +53,7 @@ export default function Hero() {
               href="#contacto"
               className="group inline-flex items-center gap-2 rounded-md bg-amber-500 px-7 py-3.5 font-semibold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-400 hover:shadow-amber-400/30"
             >
-              Contáctanos
+              Contacto
               <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           )}
