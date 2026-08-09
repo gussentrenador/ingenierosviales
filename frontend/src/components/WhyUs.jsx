@@ -1,26 +1,26 @@
 import Reveal from './Reveal'
-import { AwardIcon, ClockIcon, ShieldIcon, ToolsIcon } from './icons'
+import { AwardIcon, CompassIcon, ShieldIcon, ToolsIcon } from './icons'
 
 const PILLARS = [
   {
     icon: AwardIcon,
-    title: 'Experiencia comprobada',
-    text: 'Proyectos ejecutados para clientes públicos y privados con estándares exigentes.',
+    title: 'Más de 30 años de experiencia',
+    text: 'En carreteras, puentes y aeropuertos, en el sector público y privado.',
   },
   {
-    icon: ClockIcon,
-    title: 'Cumplimiento de plazos',
-    text: 'Planificación y control de obra que aseguran entregas dentro del cronograma.',
+    icon: CompassIcon,
+    title: 'Áreas de especialización',
+    text: 'Obras viales, aeropuertos y gran minería: movimientos de tierra, pavimentos y plantas de producción.',
   },
   {
     icon: ShieldIcon,
-    title: 'Seguridad y normativa',
-    text: 'Cumplimiento estricto de normas de seguridad vial y control de calidad.',
+    title: 'Amplia red de gestión',
+    text: 'Contactos con Empresas Concesionarias, Dirección de Vialidad, aeropuertos, constructoras y transportistas.',
   },
   {
     icon: ToolsIcon,
-    title: 'Tecnología y precisión',
-    text: 'Equipos de topografía y software especializado para resultados exactos.',
+    title: 'Asesoría y asistencia técnica',
+    text: 'Estudios de licitaciones, planificación de obras, laboratorio vial y auditorías.',
   },
 ]
 

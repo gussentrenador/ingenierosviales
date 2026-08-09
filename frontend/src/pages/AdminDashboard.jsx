@@ -5,6 +5,7 @@ import { useContent } from '../context/ContentContext'
 import { useAuth } from '../context/AuthContext'
 import api from '../api/client'
 import ImageField from '../components/admin/ImageField'
+import ServicesEditor from '../components/admin/ServicesEditor'
 
 export default function AdminDashboard() {
   const { content, reload } = useContent()
@@ -80,7 +81,7 @@ export default function AdminDashboard() {
             <div className="space-y-4">
               {group.fields.map((field) => (
                 <div key={field.key}>
-                  {field.type !== 'image' && field.type !== 'checkbox' && (
+                  {field.type !== 'image' && field.type !== 'checkbox' && field.type !== 'services' && (
                     <label className="block text-sm font-medium text-slate-700">{field.label}</label>
                   )}
 
@@ -122,6 +123,15 @@ export default function AdminDashboard() {
                       onChange={(e) => setField(field.key, e.target.value)}
                       className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 focus:border-sky-500 focus:outline-none"
                     />
+                  )}
+
+                  {field.type === 'services' && (
+                    <div className="mt-1">
+                      <ServicesEditor
+                        value={values[field.key]}
+                        onChange={(json) => setField(field.key, json)}
+                      />
+                    </div>
                   )}
 
                   {field.type === 'image' && (

@@ -44,14 +44,7 @@ export const CONTENT_SCHEMA = [
   },
   {
     section: 'Servicios',
-    fields: [
-      { key: 'service_1_title', label: 'Servicio 1 · título', type: 'text' },
-      { key: 'service_1_text', label: 'Servicio 1 · descripción', type: 'textarea' },
-      { key: 'service_2_title', label: 'Servicio 2 · título', type: 'text' },
-      { key: 'service_2_text', label: 'Servicio 2 · descripción', type: 'textarea' },
-      { key: 'service_3_title', label: 'Servicio 3 · título', type: 'text' },
-      { key: 'service_3_text', label: 'Servicio 3 · descripción', type: 'textarea' },
-    ],
+    fields: [{ key: 'services_json', label: 'Servicios (de 1 a 5)', type: 'services' }],
   },
   {
     section: 'Proyectos',
