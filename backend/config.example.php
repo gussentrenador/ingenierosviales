@@ -12,6 +12,8 @@ return [
     // Dirección que recibe los correos si la tabla site_content no tiene contact_email.
     'mail' => [
         'to_fallback' => 'contacto@tudominio.com',
+        // Copia (CC) que se agrega siempre, además del destinatario principal. Déjalo en '' para no enviar copia.
+        'cc_email' => '',
         'from_email' => 'no-responder@tudominio.com',
         'from_name' => 'Sitio web',
     ],

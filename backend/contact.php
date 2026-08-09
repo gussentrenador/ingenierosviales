@@ -32,6 +32,9 @@ $body_text = "Nombre: {$name}\nEmail: {$email}\nTeléfono: {$phone}\n\nMensaje:\
 $headers = [];
 $headers[] = 'From: ' . $config['mail']['from_name'] . ' <' . $config['mail']['from_email'] . '>';
 $headers[] = 'Reply-To: ' . $email;
+if (!empty($config['mail']['cc_email'])) {
+    $headers[] = 'Cc: ' . $config['mail']['cc_email'];
+}
 $headers[] = 'Content-Type: text/plain; charset=UTF-8';
 
 $sent = mail($to, $subject, $body_text, implode("\r\n", $headers));
