@@ -39,6 +39,7 @@ INSERT INTO site_content (content_key, content_value) VALUES
     ('project_3_text', 'Reparación y ensanche de pistas de rodado y pista principal mediante fresado, nueva base granular y colocación de pavimento asfáltico.'),
     ('project_3_image', ''),
     ('contact_email', 'omaluenda@ingenierosviales.cl'),
+    ('contact_cc_email', 'omaluendar@gmail.com'),
     ('contact_phone', ''),
     ('contact_address', ''),
     ('footer_text', '')

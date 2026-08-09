@@ -21,10 +21,12 @@ $name = $sanitize($name);
 $email = $sanitize($email);
 $phone = $sanitize($phone);
 
-$row = db($config)
-    ->query("SELECT content_value FROM site_content WHERE content_key = 'contact_email' LIMIT 1")
-    ->fetch();
-$to = ($row && $row['content_value'] !== '') ? $row['content_value'] : $config['mail']['to_fallback'];
+$rows = db($config)
+    ->query("SELECT content_key, content_value FROM site_content WHERE content_key IN ('contact_email', 'contact_cc_email')")
+    ->fetchAll();
+$contact = array_column($rows, 'content_value', 'content_key');
+$to = ($contact['contact_email'] ?? '') !== '' ? $contact['contact_email'] : $config['mail']['to_fallback'];
+$cc = ($contact['contact_cc_email'] ?? '') !== '' ? $contact['contact_cc_email'] : ($config['mail']['cc_email'] ?? '');
 
 $subject = 'Nuevo mensaje de contacto de ' . $name;
 $body_text = "Nombre: {$name}\nEmail: {$email}\nTeléfono: {$phone}\n\nMensaje:\n{$message}\n";
@@ -32,8 +34,8 @@ $body_text = "Nombre: {$name}\nEmail: {$email}\nTeléfono: {$phone}\n\nMensaje:\
 $headers = [];
 $headers[] = 'From: ' . $config['mail']['from_name'] . ' <' . $config['mail']['from_email'] . '>';
 $headers[] = 'Reply-To: ' . $email;
-if (!empty($config['mail']['cc_email'])) {
-    $headers[] = 'Cc: ' . $config['mail']['cc_email'];
+if ($cc !== '' && filter_var($cc, FILTER_VALIDATE_EMAIL)) {
+    $headers[] = 'Cc: ' . $cc;
 }
 $headers[] = 'Content-Type: text/plain; charset=UTF-8';
 

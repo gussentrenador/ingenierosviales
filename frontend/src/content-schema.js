@@ -64,6 +64,7 @@ export const CONTENT_SCHEMA = [
     section: 'Contacto',
     fields: [
       { key: 'contact_email', label: 'Email que recibe los mensajes', type: 'text' },
+      { key: 'contact_cc_email', label: 'Copia (CC) del correo (opcional)', type: 'text' },
       { key: 'contact_phone', label: 'Teléfono', type: 'text' },
       { key: 'contact_address', label: 'Dirección', type: 'text' },
     ],
