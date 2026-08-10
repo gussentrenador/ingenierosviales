@@ -7,10 +7,11 @@ import Servicios from '../components/Servicios'
 import Proyectos from '../components/Proyectos'
 import Contacto from '../components/Contacto'
 import Footer from '../components/Footer'
+import MaintenancePage from '../components/MaintenancePage'
 import { useContent } from '../context/ContentContext'
 
 export default function Landing() {
-  const { loading, error } = useContent()
+  const { content, loading, error } = useContent()
 
   if (loading) {
     return (
@@ -18,6 +19,10 @@ export default function Landing() {
         Cargando…
       </div>
     )
+  }
+
+  if (content.maintenance_mode === '1') {
+    return <MaintenancePage />
   }
 
   return (

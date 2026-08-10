@@ -17,6 +17,9 @@ CREATE TABLE IF NOT EXISTS site_content (
 INSERT INTO site_content (content_key, content_value) VALUES
     ('company_name', 'Ingenieros Viales'),
     ('company_tagline', 'Ingeniería vial con precisión y seguridad'),
+    ('maintenance_mode', '0'),
+    ('maintenance_title', 'Sitio en mantención'),
+    ('maintenance_message', 'Estamos realizando mejoras en nuestro sitio. Vuelve a visitarnos pronto.'),
     ('hero_title', 'Ingeniería vial con precisión y resultados'),
     ('hero_subtitle', 'Diseñamos, pavimentamos y supervisamos obras viales con los más altos estándares de calidad y seguridad.'),
     ('hero_image', ''),

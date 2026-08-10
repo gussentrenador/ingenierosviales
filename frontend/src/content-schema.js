@@ -9,6 +9,19 @@ export const CONTENT_SCHEMA = [
     ],
   },
   {
+    section: 'Modo mantención / en construcción',
+    fields: [
+      {
+        key: 'maintenance_mode',
+        label: 'Activar vista de mantención (oculta el sitio a los visitantes)',
+        type: 'checkbox',
+        defaultOn: false,
+      },
+      { key: 'maintenance_title', label: 'Título del aviso', type: 'text' },
+      { key: 'maintenance_message', label: 'Mensaje del aviso', type: 'textarea' },
+    ],
+  },
+  {
     section: 'Hero (portada)',
     fields: [
       { key: 'hero_title', label: 'Título principal', type: 'text' },

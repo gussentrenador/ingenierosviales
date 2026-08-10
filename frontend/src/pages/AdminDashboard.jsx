@@ -85,28 +85,33 @@ export default function AdminDashboard() {
                     <label className="block text-sm font-medium text-slate-700">{field.label}</label>
                   )}
 
-                  {field.type === 'checkbox' && (
-                    <label className="flex cursor-pointer items-center gap-3">
-                      <input
-                        type="checkbox"
-                        className="sr-only"
-                        checked={values[field.key] !== '0'}
-                        onChange={(e) => setField(field.key, e.target.checked ? '1' : '0')}
-                      />
-                      <span
-                        className={`relative inline-flex h-6 w-11 flex-none items-center rounded-full transition-colors ${
-                          values[field.key] === '0' ? 'bg-slate-300' : 'bg-sky-500'
-                        }`}
-                      >
-                        <span
-                          className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform ${
-                            values[field.key] === '0' ? 'translate-x-0.5' : 'translate-x-5'
-                          }`}
-                        />
-                      </span>
-                      <span className="text-sm font-medium text-slate-700">{field.label}</span>
-                    </label>
-                  )}
+                  {field.type === 'checkbox' &&
+                    (() => {
+                      const raw = values[field.key]
+                      const isChecked = raw === '0' || raw === '1' ? raw !== '0' : field.defaultOn !== false
+                      return (
+                        <label className="flex cursor-pointer items-center gap-3">
+                          <input
+                            type="checkbox"
+                            className="sr-only"
+                            checked={isChecked}
+                            onChange={(e) => setField(field.key, e.target.checked ? '1' : '0')}
+                          />
+                          <span
+                            className={`relative inline-flex h-6 w-11 flex-none items-center rounded-full transition-colors ${
+                              isChecked ? 'bg-sky-500' : 'bg-slate-300'
+                            }`}
+                          >
+                            <span
+                              className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform ${
+                                isChecked ? 'translate-x-5' : 'translate-x-0.5'
+                              }`}
+                            />
+                          </span>
+                          <span className="text-sm font-medium text-slate-700">{field.label}</span>
+                        </label>
+                      )
+                    })()}
 
                   {field.type === 'textarea' && (
                     <textarea
