@@ -5,6 +5,7 @@ import { ArrowRightIcon, ChevronDownIcon, CompassIcon } from './icons'
 export default function Hero() {
   const { content } = useContent()
   const bg = assetUrl(content.hero_image)
+  const contactVisible = content.show_contact_cta !== '0'
 
   return (
     <section id="top" className="relative flex min-h-screen items-center overflow-hidden bg-slate-950">
@@ -30,7 +31,7 @@ export default function Hero() {
         </span>
 
         <h1
-          className="animate-fade-in-up mx-auto mt-6 max-w-3xl font-display text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl"
+          className="animate-fade-in-up mx-auto mt-6 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight text-amber-400 sm:text-5xl"
           style={{ animationDelay: '120ms' }}
         >
           {content.hero_title || 'Ingeniería vial con precisión y resultados'}
@@ -48,7 +49,7 @@ export default function Hero() {
           className="animate-fade-in-up mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           style={{ animationDelay: '360ms' }}
         >
-          {content.show_contact_cta !== '0' && (
+          {contactVisible && (
             <a
               href="#contacto"
               className="group inline-flex items-center gap-2 rounded-md bg-amber-500 px-7 py-3.5 font-semibold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-400 hover:shadow-amber-400/30"
@@ -59,9 +60,16 @@ export default function Hero() {
           )}
           <a
             href="#proyectos"
-            className="inline-flex items-center gap-2 rounded-md border border-white/25 px-7 py-3.5 font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/5"
+            className={
+              contactVisible
+                ? 'inline-flex items-center gap-2 rounded-md border border-white/25 px-7 py-3.5 font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/5'
+                : 'group inline-flex items-center gap-2 rounded-md bg-amber-500 px-7 py-3.5 font-semibold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-400 hover:shadow-amber-400/30'
+            }
           >
             Ver proyectos
+            {!contactVisible && (
+              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            )}
           </a>
         </div>
       </div>

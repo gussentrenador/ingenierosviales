@@ -35,10 +35,6 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-display text-lg font-bold tracking-tight text-white">
-          {content.company_name || 'Empresa de Ingeniería Vial'}
-        </a>
-
         <ul className="hidden gap-8 text-sm font-medium text-slate-200 sm:flex">
           {LINKS.map((link) => (
             <li key={link.href}>
@@ -62,7 +58,7 @@ export default function Navbar() {
           type="button"
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           onClick={() => setOpen((v) => !v)}
-          className="text-white sm:hidden"
+          className="ml-auto text-white sm:hidden"
         >
           {open ? <CloseIcon className="h-7 w-7" /> : <MenuIcon className="h-7 w-7" />}
         </button>

@@ -3,15 +3,16 @@ import { assetUrl } from '../api/client'
 import { CheckIcon } from './icons'
 import Reveal from './Reveal'
 
-const HIGHLIGHTS = [
-  'Más de 30 años de experiencia en carreteras, puentes y aeropuertos',
-  'Experiencia en sector público y privado',
-  'Amplia red de contactos: concesionarias, Dirección de Vialidad y aeropuertos',
-]
-
 export default function Nosotros() {
   const { content } = useContent()
   const img = assetUrl(content.about_image)
+  const years = content.stat_1_value || '30+'
+
+  const highlights = [
+    `Más de ${years} años de experiencia en carreteras, puentes y aeropuertos`,
+    'Experiencia en sector público y privado',
+    'Amplia red de contactos: concesionarias, Dirección de Vialidad y aeropuertos',
+  ]
 
   return (
     <section id="nosotros" className="mx-auto max-w-6xl px-6 py-24 sm:py-28">
@@ -28,9 +29,7 @@ export default function Nosotros() {
               )}
             </div>
             <div className="absolute -bottom-6 -right-6 hidden rounded-xl bg-amber-500 px-6 py-4 text-slate-950 shadow-lg sm:block">
-              <p className="font-display text-3xl font-extrabold leading-none">
-                {content.stat_1_value || '30+'}
-              </p>
+              <p className="font-display text-3xl font-extrabold leading-none">{years}</p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-wide">Años de trayectoria</p>
             </div>
           </div>
@@ -49,7 +48,7 @@ export default function Nosotros() {
           </p>
 
           <ul className="mt-7 space-y-3">
-            {HIGHLIGHTS.map((h) => (
+            {highlights.map((h) => (
               <li key={h} className="flex items-start gap-3 text-slate-700">
                 <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-amber-100 text-amber-600">
                   <CheckIcon className="h-3.5 w-3.5" />

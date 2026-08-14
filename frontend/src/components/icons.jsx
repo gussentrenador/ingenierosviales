@@ -31,6 +31,22 @@ export function ChevronDownIcon({ className }) {
   )
 }
 
+export function ChevronLeftIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M15 6l-6 6 6 6" />
+    </svg>
+  )
+}
+
+export function ChevronRightIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M9 6l6 6-6 6" />
+    </svg>
+  )
+}
+
 export function ArrowRightIcon({ className }) {
   return (
     <svg viewBox="0 0 24 24" className={className} {...base}>

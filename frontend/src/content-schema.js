@@ -62,15 +62,7 @@ export const CONTENT_SCHEMA = [
   {
     section: 'Proyectos',
     fields: [
-      { key: 'project_1_title', label: 'Proyecto 1 · título', type: 'text' },
-      { key: 'project_1_text', label: 'Proyecto 1 · descripción', type: 'textarea' },
-      { key: 'project_1_image', label: 'Proyecto 1 · imagen', type: 'image' },
-      { key: 'project_2_title', label: 'Proyecto 2 · título', type: 'text' },
-      { key: 'project_2_text', label: 'Proyecto 2 · descripción', type: 'textarea' },
-      { key: 'project_2_image', label: 'Proyecto 2 · imagen', type: 'image' },
-      { key: 'project_3_title', label: 'Proyecto 3 · título', type: 'text' },
-      { key: 'project_3_text', label: 'Proyecto 3 · descripción', type: 'textarea' },
-      { key: 'project_3_image', label: 'Proyecto 3 · imagen', type: 'image' },
+      { key: 'projects_json', label: 'Proyectos (de 1 a 6, cada uno con su carrusel de fotos)', type: 'projects' },
     ],
   },
   {
