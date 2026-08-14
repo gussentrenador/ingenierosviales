@@ -55,6 +55,11 @@ export const CONTENT_SCHEMA = [
   {
     section: 'Nosotros',
     fields: [
+      {
+        key: 'stat_1_value',
+        label: 'Años de experiencia (ej: 30+) — se muestra en el sello sobre la foto y en la lista',
+        type: 'text',
+      },
       { key: 'about_title', label: 'Título', type: 'text' },
       { key: 'about_text', label: 'Descripción', type: 'textarea' },
       { key: 'about_image', label: 'Imagen', type: 'image' },

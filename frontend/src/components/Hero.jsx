@@ -20,8 +20,8 @@ export default function Hero() {
         ) : (
           <div className="bg-blueprint-grid h-full w-full bg-slate-950" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-950/70 to-slate-950" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/35 to-slate-950/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/40 via-transparent to-slate-950/20" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-28 pb-40 text-center">
@@ -31,14 +31,14 @@ export default function Hero() {
         </span>
 
         <h1
-          className="animate-fade-in-up mx-auto mt-6 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight text-amber-400 sm:text-5xl"
+          className="animate-fade-in-up drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] mx-auto mt-6 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight text-amber-400 sm:text-5xl"
           style={{ animationDelay: '120ms' }}
         >
           {content.hero_title || 'Ingeniería vial con precisión y resultados'}
         </h1>
 
         <p
-          className="animate-fade-in-up mx-auto mt-6 max-w-2xl text-lg text-slate-300"
+          className="animate-fade-in-up drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] mx-auto mt-6 max-w-2xl text-lg text-slate-200"
           style={{ animationDelay: '240ms' }}
         >
           {content.hero_subtitle ||
