@@ -5,7 +5,7 @@ import { ArrowRightIcon, ChevronDownIcon, CompassIcon } from './icons'
 export default function Hero() {
   const { content } = useContent()
   const bg = assetUrl(content.hero_image)
-  const contactVisible = content.show_contact_cta !== '0'
+  const contactVisible = content.show_hero_cta !== '0'
 
   return (
     <section id="top" className="relative flex min-h-screen items-center overflow-hidden bg-slate-950">

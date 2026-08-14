@@ -28,8 +28,13 @@ export const CONTENT_SCHEMA = [
       { key: 'hero_subtitle', label: 'Subtítulo', type: 'textarea' },
       { key: 'hero_image', label: 'Imagen de fondo', type: 'image' },
       {
-        key: 'show_contact_cta',
-        label: 'Mostrar botón "Contáctanos" (portada y menú superior)',
+        key: 'show_navbar_cta',
+        label: 'Mostrar botón "Contacto" en el menú superior',
+        type: 'checkbox',
+      },
+      {
+        key: 'show_hero_cta',
+        label: 'Mostrar botón "Contacto" en la portada',
         type: 'checkbox',
       },
     ],

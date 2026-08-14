@@ -5,7 +5,7 @@ require __DIR__ . '/bootstrap.php';
 const ALLOWED_KEYS = [
     'company_name', 'company_tagline',
     'maintenance_mode', 'maintenance_title', 'maintenance_message',
-    'hero_title', 'hero_subtitle', 'hero_image', 'show_contact_cta',
+    'hero_title', 'hero_subtitle', 'hero_image', 'show_navbar_cta', 'show_hero_cta',
     'stat_1_value', 'stat_1_label',
     'stat_2_value', 'stat_2_label',
     'stat_3_value', 'stat_3_label',

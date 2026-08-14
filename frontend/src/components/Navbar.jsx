@@ -45,7 +45,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {content.show_contact_cta !== '0' && (
+        {content.show_navbar_cta !== '0' && (
           <a
             href="#contacto"
             className="hidden rounded-md bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition-all hover:bg-amber-400 hover:shadow-amber-500/30 sm:inline-block"
@@ -81,7 +81,7 @@ export default function Navbar() {
               </a>
             </li>
           ))}
-          {content.show_contact_cta !== '0' && (
+          {content.show_navbar_cta !== '0' && (
             <li>
               <a
                 href="#contacto"
