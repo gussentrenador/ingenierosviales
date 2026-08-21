@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useContent } from '../context/ContentContext'
 import { assetUrl } from '../api/client'
 import { LinkedInIcon, UserIcon, ChevronLeftIcon, ChevronRightIcon } from './icons'
 import Reveal from './Reveal'
+
+const ABOUT_LIMIT = 200
 
 function parseTeam(raw) {
   if (!raw) return []
@@ -14,15 +16,28 @@ function parseTeam(raw) {
   }
 }
 
+function truncate(text, max) {
+  if (text.length <= max) return text
+  const cut = text.slice(0, max)
+  const lastSpace = cut.lastIndexOf(' ')
+  return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut) + '…'
+}
+
 export default function Equipo() {
   const { content } = useContent()
   const team = parseTeam(content.team_json)
   const [index, setIndex] = useState(0)
+  const [expanded, setExpanded] = useState(false)
+
+  useEffect(() => {
+    setExpanded(false)
+  }, [index])
 
   if (team.length === 0) return null
 
   const member = team[index]
   const photo = assetUrl(member.photo)
+  const aboutIsLong = (member.about || '').length > ABOUT_LIMIT
   const prev = () => setIndex((i) => (i === 0 ? team.length - 1 : i - 1))
   const next = () => setIndex((i) => (i === team.length - 1 ? 0 : i + 1))
 
@@ -57,7 +72,18 @@ export default function Equipo() {
                   <p className="mt-1 text-base font-medium text-amber-600">{member.profession}</p>
                 )}
                 {member.about && (
-                  <p className="mt-4 leading-relaxed text-slate-600">{member.about}</p>
+                  <div className="mt-4 leading-relaxed text-slate-600">
+                    <p>{expanded || !aboutIsLong ? member.about : truncate(member.about, ABOUT_LIMIT)}</p>
+                    {aboutIsLong && (
+                      <button
+                        type="button"
+                        onClick={() => setExpanded((v) => !v)}
+                        className="mt-1 text-sm font-semibold text-amber-600 hover:text-amber-700"
+                      >
+                        {expanded ? 'Leer menos' : 'Leer más'}
+                      </button>
+                    )}
+                  </div>
                 )}
 
                 {member.linkedin_url && (
