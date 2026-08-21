@@ -69,13 +69,27 @@ export const CONTENT_SCHEMA = [
     ],
   },
   {
+    section: 'Por qué elegirnos',
+    fields: [
+      { key: 'whyus_title', label: 'Título de la sección', type: 'text' },
+      { key: 'whyus_pillar_1_title', label: 'Punto 1 · título', type: 'text' },
+      { key: 'whyus_pillar_1_text', label: 'Punto 1 · descripción', type: 'textarea' },
+      { key: 'whyus_pillar_2_title', label: 'Punto 2 · título', type: 'text' },
+      { key: 'whyus_pillar_2_text', label: 'Punto 2 · descripción', type: 'textarea' },
+      { key: 'whyus_pillar_3_title', label: 'Punto 3 · título', type: 'text' },
+      { key: 'whyus_pillar_3_text', label: 'Punto 3 · descripción', type: 'textarea' },
+      { key: 'whyus_pillar_4_title', label: 'Punto 4 · título', type: 'text' },
+      { key: 'whyus_pillar_4_text', label: 'Punto 4 · descripción', type: 'textarea' },
+    ],
+  },
+  {
     section: 'Servicios',
     fields: [{ key: 'services_json', label: 'Servicios (de 1 a 5)', type: 'services' }],
   },
   {
     section: 'Proyectos',
     fields: [
-      { key: 'projects_json', label: 'Proyectos (de 1 a 6, cada uno con su carrusel de fotos)', type: 'projects' },
+      { key: 'projects_json', label: 'Proyectos (de 1 a 6, cada uno con su collage de fotos)', type: 'projects' },
     ],
   },
   {

@@ -1,30 +1,37 @@
+import { useContent } from '../context/ContentContext'
 import Reveal from './Reveal'
 import { AwardIcon, CompassIcon, ShieldIcon, ToolsIcon } from './icons'
 
-const PILLARS = [
+const ICONS = [AwardIcon, CompassIcon, ShieldIcon, ToolsIcon]
+
+const DEFAULT_PILLARS = [
   {
-    icon: AwardIcon,
     title: 'Más de 30 años de experiencia',
     text: 'En carreteras, puentes y aeropuertos, en el sector público y privado.',
   },
   {
-    icon: CompassIcon,
     title: 'Áreas de especialización',
     text: 'Obras viales, aeropuertos y gran minería: movimientos de tierra, pavimentos y plantas de producción.',
   },
   {
-    icon: ShieldIcon,
     title: 'Amplia red de gestión',
     text: 'Contactos con Empresas Concesionarias, Dirección de Vialidad, aeropuertos, constructoras y transportistas.',
   },
   {
-    icon: ToolsIcon,
     title: 'Asesoría y asistencia técnica',
     text: 'Estudios de licitaciones, planificación de obras, laboratorio vial y auditorías.',
   },
 ]
 
 export default function WhyUs() {
+  const { content } = useContent()
+
+  const pillars = DEFAULT_PILLARS.map((d, i) => ({
+    icon: ICONS[i],
+    title: content[`whyus_pillar_${i + 1}_title`] || d.title,
+    text: content[`whyus_pillar_${i + 1}_text`] || d.text,
+  }))
+
   return (
     <section className="bg-blueprint-grid relative overflow-hidden bg-slate-950 py-24 sm:py-28">
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950/95 to-slate-950" />
@@ -34,13 +41,13 @@ export default function WhyUs() {
             Por qué elegirnos
           </span>
           <h2 className="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">
-            Confianza construida en cada proyecto
+            {content.whyus_title || 'Confianza construida en cada proyecto'}
           </h2>
         </Reveal>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {PILLARS.map((p, i) => (
-            <Reveal key={p.title} delay={i * 100}>
+          {pillars.map((p, i) => (
+            <Reveal key={i} delay={i * 100}>
               <div className="group h-full rounded-2xl border border-white/10 bg-white/5 p-7 transition-colors hover:border-amber-400/40 hover:bg-white/[0.08]">
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/15 text-amber-400 transition-colors group-hover:bg-amber-500 group-hover:text-slate-950">
                   <p.icon className="h-6 w-6" />
