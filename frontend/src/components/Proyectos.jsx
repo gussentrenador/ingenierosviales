@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { useContent } from '../context/ContentContext'
 import { assetUrl } from '../api/client'
 import Reveal from './Reveal'
-import ProjectCarousel from './ProjectCarousel'
+import ProjectCollage from './ProjectCollage'
+import Lightbox from './Lightbox'
 
 const DEFAULT_PROJECTS = [
   {
@@ -49,6 +51,17 @@ function parseProjects(content) {
 export default function Proyectos() {
   const { content } = useContent()
   const projects = parseProjects(content)
+  const [lightbox, setLightbox] = useState(null) // { projectIndex, photoIndex } | null
+
+  const activeImages = lightbox ? (projects[lightbox.projectIndex].images || []).map(assetUrl) : []
+
+  const navigate = (delta) => {
+    setLightbox((lb) => {
+      if (!lb) return lb
+      const len = activeImages.length
+      return { ...lb, photoIndex: (lb.photoIndex + delta + len) % len }
+    })
+  }
 
   return (
     <section id="proyectos" className="mx-auto max-w-6xl px-6 py-24 sm:py-28">
@@ -69,19 +82,30 @@ export default function Proyectos() {
             delay={i * 120}
             className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
           >
-            <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-slate-200 shadow-sm">
-              <ProjectCarousel images={(p.images || []).map(assetUrl)} alt={p.title} />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-6 transition-transform duration-300 group-hover:translate-y-0">
-                <h3 className="font-display text-lg font-semibold text-white">{p.title}</h3>
-                <p className="mt-2 max-h-0 overflow-hidden text-sm leading-relaxed text-slate-300 opacity-0 transition-all duration-300 group-hover:max-h-24 group-hover:opacity-100">
-                  {p.text}
-                </p>
+            <div className="h-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg">
+              <div className="aspect-[4/3] w-full">
+                <ProjectCollage
+                  images={(p.images || []).map(assetUrl)}
+                  onOpen={(photoIndex) => setLightbox({ projectIndex: i, photoIndex })}
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="font-display text-lg font-semibold text-slate-900">{p.title}</h3>
+                {p.text && <p className="mt-2 text-sm leading-relaxed text-slate-600">{p.text}</p>}
               </div>
             </div>
           </Reveal>
         ))}
       </div>
+
+      {lightbox && activeImages.length > 0 && (
+        <Lightbox
+          images={activeImages}
+          index={lightbox.photoIndex}
+          onClose={() => setLightbox(null)}
+          onNavigate={navigate}
+        />
+      )}
     </section>
   )
 }
