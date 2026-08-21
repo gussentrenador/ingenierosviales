@@ -9,9 +9,9 @@ export default function Nosotros() {
   const years = content.stat_1_value || '30+'
 
   const highlights = [
-    `Más de ${years} años de experiencia en carreteras, puentes y aeropuertos`,
-    'Experiencia en sector público y privado',
-    'Amplia red de contactos: concesionarias, Dirección de Vialidad y aeropuertos',
+    content.highlight_1 || `Más de ${years} años de experiencia en carreteras, puentes y aeropuertos`,
+    content.highlight_2 || 'Experiencia en sector público y privado',
+    content.highlight_3 || 'Amplia red de contactos: concesionarias, Dirección de Vialidad y aeropuertos',
   ]
 
   return (
@@ -48,8 +48,8 @@ export default function Nosotros() {
           </p>
 
           <ul className="mt-7 space-y-3">
-            {highlights.map((h) => (
-              <li key={h} className="flex items-start gap-3 text-slate-700">
+            {highlights.map((h, i) => (
+              <li key={i} className="flex items-start gap-3 text-slate-700">
                 <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-amber-100 text-amber-600">
                   <CheckIcon className="h-3.5 w-3.5" />
                 </span>

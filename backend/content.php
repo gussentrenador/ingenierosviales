@@ -11,6 +11,7 @@ const ALLOWED_KEYS = [
     'stat_3_value', 'stat_3_label',
     'stat_4_value', 'stat_4_label',
     'about_title', 'about_text', 'about_image',
+    'highlight_1', 'highlight_2', 'highlight_3',
     'services_json',
     'projects_json',
     'project_1_title', 'project_1_text', 'project_1_image',

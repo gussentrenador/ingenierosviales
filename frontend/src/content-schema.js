@@ -63,6 +63,9 @@ export const CONTENT_SCHEMA = [
       { key: 'about_title', label: 'Título', type: 'text' },
       { key: 'about_text', label: 'Descripción', type: 'textarea' },
       { key: 'about_image', label: 'Imagen', type: 'image' },
+      { key: 'highlight_1', label: 'Punto destacado 1', type: 'text' },
+      { key: 'highlight_2', label: 'Punto destacado 2', type: 'text' },
+      { key: 'highlight_3', label: 'Punto destacado 3', type: 'text' },
     ],
   },
   {
