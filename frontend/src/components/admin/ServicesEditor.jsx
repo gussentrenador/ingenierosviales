@@ -1,3 +1,5 @@
+import RichTextEditor from './RichTextEditor'
+
 const MAX_SERVICES = 5
 const MIN_SERVICES = 1
 
@@ -61,12 +63,13 @@ export default function ServicesEditor({ value, onChange }) {
             className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 focus:border-sky-500 focus:outline-none"
           />
           <label className="mt-3 block text-sm font-medium text-slate-700">Descripción</label>
-          <textarea
-            rows={2}
-            value={service.text}
-            onChange={(e) => updateField(i, 'text', e.target.value)}
-            className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 focus:border-sky-500 focus:outline-none"
-          />
+          <div className="mt-1">
+            <RichTextEditor
+              value={service.text}
+              onChange={(html) => updateField(i, 'text', html)}
+              placeholder="Escribe la descripción. Usa el botón de lista para viñetas, como en un Word."
+            />
+          </div>
         </div>
       ))}
 

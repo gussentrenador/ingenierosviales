@@ -1,6 +1,7 @@
 import { useContent } from '../context/ContentContext'
 import { AwardIcon, ClockIcon, CompassIcon, ShieldIcon, ToolsIcon } from './icons'
 import Reveal from './Reveal'
+import { sanitizeHtml } from '../utils/sanitizeHtml'
 
 const ICONS = [CompassIcon, ShieldIcon, ToolsIcon, AwardIcon, ClockIcon]
 
@@ -70,7 +71,10 @@ export default function Servicios() {
                     <Icon className="h-7 w-7" />
                   </span>
                   <h3 className="mt-6 font-display text-xl font-semibold text-slate-900">{s.title}</h3>
-                  <p className="mt-3 leading-relaxed text-slate-600">{s.text}</p>
+                  <div
+                    className="rich-content mt-3 text-left leading-relaxed text-slate-600"
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(s.text) }}
+                  />
                 </div>
               </Reveal>
             )
