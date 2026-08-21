@@ -5,10 +5,22 @@ import Nosotros from '../components/Nosotros'
 import WhyUs from '../components/WhyUs'
 import Servicios from '../components/Servicios'
 import Proyectos from '../components/Proyectos'
+import Equipo from '../components/Equipo'
 import Contacto from '../components/Contacto'
 import Footer from '../components/Footer'
 import MaintenancePage from '../components/MaintenancePage'
 import { useContent } from '../context/ContentContext'
+import { parseSectionOrder } from '../components/admin/SectionOrderEditor'
+
+const SECTION_COMPONENTS = {
+  stats: StatsBar,
+  nosotros: Nosotros,
+  whyus: WhyUs,
+  servicios: Servicios,
+  proyectos: Proyectos,
+  equipo: Equipo,
+  contacto: Contacto,
+}
 
 export default function Landing() {
   const { content, loading, error } = useContent()
@@ -25,6 +37,8 @@ export default function Landing() {
     return <MaintenancePage />
   }
 
+  const order = parseSectionOrder(content.section_order_json)
+
   return (
     <div className="min-h-screen bg-white">
       {error && (
@@ -32,12 +46,11 @@ export default function Landing() {
       )}
       <Navbar />
       <Hero />
-      <StatsBar />
-      <Nosotros />
-      <WhyUs />
-      <Servicios />
-      <Proyectos />
-      <Contacto />
+      {order.map((key, i) => {
+        const Component = SECTION_COMPONENTS[key]
+        if (!Component) return null
+        return <Component key={key} overlapHero={key === 'stats' && i === 0} />
+      })}
       <Footer />
     </div>
   )

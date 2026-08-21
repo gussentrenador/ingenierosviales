@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS site_content (
 INSERT INTO site_content (content_key, content_value) VALUES
     ('company_name', 'Ingenieros Viales'),
     ('company_tagline', 'Ingeniería vial con precisión y seguridad'),
+    ('section_order_json', '["stats","nosotros","whyus","servicios","proyectos","equipo","contacto"]'),
     ('maintenance_mode', '0'),
     ('maintenance_title', 'Sitio en mantención'),
     ('maintenance_message', 'Estamos realizando mejoras en nuestro sitio. Vuelve a visitarnos pronto.'),
@@ -46,6 +47,7 @@ INSERT INTO site_content (content_key, content_value) VALUES
     ('whyus_pillar_4_text', 'Estudios de licitaciones, planificación de obras, laboratorio vial y auditorías.'),
     ('services_json', '[{"title":"Asesorías","text":"Estudios de licitaciones, planificación y gestión de obras viales, aeroportuarias y de gran minería."},{"title":"Asistencia técnica","text":"Plantas de producción de áridos, plantas asfálticas y de hormigón, laboratorio vial y auditorías de obras."},{"title":"Obras en aeropuertos y minería","text":"Conservación y repavimentación de pistas, caminos de servicio y accesos en gran minería."}]'),
     ('projects_json', '[{"title":"Conservaciones Viales Periódicas","text":"Tratamientos superficiales dobles y reposición de pavimentos asfálticos en calzadas y bermas, previa recuperación con bacheos y sellado de grietas, señalización vial y demarcación del pavimento.","images":[]},{"title":"Obras en Autopistas Concesionadas","text":"Desnivelación de enlaces viales en Ruta 5 Norte y Sur, y reposición de pavimentos de hormigón en mal estado en calzadas de autopistas concesionadas.","images":[]},{"title":"Obras en Aeropuertos","text":"Reparación y ensanche de pistas de rodado y pista principal mediante fresado, nueva base granular y colocación de pavimento asfáltico.","images":[]}]'),
+    ('team_json', '[]'),
     ('contact_email', 'omaluenda@ingenierosviales.cl'),
     ('contact_cc_email', 'omaluendar@gmail.com'),
     ('contact_phone', ''),

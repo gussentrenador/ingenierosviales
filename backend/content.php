@@ -4,6 +4,7 @@ require __DIR__ . '/bootstrap.php';
 // Debe coincidir con las keys definidas en frontend/src/content-schema.js
 const ALLOWED_KEYS = [
     'company_name', 'company_tagline',
+    'section_order_json',
     'maintenance_mode', 'maintenance_title', 'maintenance_message',
     'hero_title', 'hero_subtitle', 'hero_image', 'show_navbar_cta', 'show_hero_cta',
     'stat_1_value', 'stat_1_label',
@@ -19,6 +20,7 @@ const ALLOWED_KEYS = [
     'whyus_pillar_4_title', 'whyus_pillar_4_text',
     'services_json',
     'projects_json',
+    'team_json',
     'project_1_title', 'project_1_text', 'project_1_image',
     'project_2_title', 'project_2_text', 'project_2_image',
     'project_3_title', 'project_3_text', 'project_3_image',

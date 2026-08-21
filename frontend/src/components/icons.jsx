@@ -124,6 +124,23 @@ export function ToolsIcon({ className }) {
   )
 }
 
+export function LinkedInIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+      <path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.25 8.75h3.4V21h-3.4V8.75zM9.5 8.75h3.26v1.68h.05c.45-.86 1.56-1.77 3.21-1.77 3.44 0 4.07 2.26 4.07 5.2V21h-3.4v-6.4c0-1.53-.03-3.5-2.13-3.5-2.14 0-2.47 1.67-2.47 3.39V21H9.5V8.75z" />
+    </svg>
+  )
+}
+
+export function UserIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" />
+    </svg>
+  )
+}
+
 export function AwardIcon({ className }) {
   return (
     <svg viewBox="0 0 24 24" className={className} {...base}>

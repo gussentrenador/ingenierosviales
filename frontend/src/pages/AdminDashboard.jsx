@@ -7,6 +7,8 @@ import api from '../api/client'
 import ImageField from '../components/admin/ImageField'
 import ServicesEditor from '../components/admin/ServicesEditor'
 import ProjectsEditor from '../components/admin/ProjectsEditor'
+import TeamEditor from '../components/admin/TeamEditor'
+import SectionOrderEditor from '../components/admin/SectionOrderEditor'
 
 export default function AdminDashboard() {
   const { content, reload } = useContent()
@@ -85,7 +87,9 @@ export default function AdminDashboard() {
                   {field.type !== 'image' &&
                     field.type !== 'checkbox' &&
                     field.type !== 'services' &&
-                    field.type !== 'projects' && (
+                    field.type !== 'projects' &&
+                    field.type !== 'team' &&
+                    field.type !== 'order' && (
                       <label className="block text-sm font-medium text-slate-700">{field.label}</label>
                     )}
 
@@ -146,6 +150,24 @@ export default function AdminDashboard() {
                   {field.type === 'projects' && (
                     <div className="mt-1">
                       <ProjectsEditor
+                        value={values[field.key]}
+                        onChange={(json) => setField(field.key, json)}
+                      />
+                    </div>
+                  )}
+
+                  {field.type === 'team' && (
+                    <div className="mt-1">
+                      <TeamEditor
+                        value={values[field.key]}
+                        onChange={(json) => setField(field.key, json)}
+                      />
+                    </div>
+                  )}
+
+                  {field.type === 'order' && (
+                    <div className="mt-1">
+                      <SectionOrderEditor
                         value={values[field.key]}
                         onChange={(json) => setField(field.key, json)}
                       />

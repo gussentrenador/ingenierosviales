@@ -9,6 +9,10 @@ export const CONTENT_SCHEMA = [
     ],
   },
   {
+    section: 'Orden de las secciones',
+    fields: [{ key: 'section_order_json', label: 'Orden', type: 'order' }],
+  },
+  {
     section: 'Modo mantención / en construcción',
     fields: [
       {
@@ -91,6 +95,10 @@ export const CONTENT_SCHEMA = [
     fields: [
       { key: 'projects_json', label: 'Proyectos (de 1 a 6, cada uno con su collage de fotos)', type: 'projects' },
     ],
+  },
+  {
+    section: 'Equipo (LinkedIn)',
+    fields: [{ key: 'team_json', label: 'Profesionales (hasta 8)', type: 'team' }],
   },
   {
     section: 'Contacto',

@@ -14,7 +14,7 @@ const DEFAULTS = [
 
 const GRID_COLS = { 2: 'sm:grid-cols-2', 3: 'sm:grid-cols-3', 4: 'sm:grid-cols-4' }
 
-export default function StatsBar() {
+export default function StatsBar({ overlapHero = false }) {
   const { content } = useContent()
 
   const stats = DEFAULTS.map((d, i) => {
@@ -26,7 +26,7 @@ export default function StatsBar() {
   if (stats.length === 0) return null
 
   return (
-    <div className="relative z-10 mx-auto -mt-20 max-w-5xl px-6">
+    <div className={`relative z-10 mx-auto max-w-5xl px-6 ${overlapHero ? '-mt-20' : 'py-14'}`}>
       <div
         className={`grid grid-cols-2 gap-8 rounded-2xl border border-white/10 bg-slate-900/95 px-8 py-10 shadow-2xl shadow-slate-900/40 backdrop-blur ${
           GRID_COLS[stats.length] || 'sm:grid-cols-4'
