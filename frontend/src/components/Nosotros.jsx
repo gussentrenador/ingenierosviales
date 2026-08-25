@@ -3,24 +3,17 @@ import { assetUrl } from '../api/client'
 import { CheckIcon } from './icons'
 import Reveal from './Reveal'
 
-// Compatibilidad con sitios creados antes del editor dinámico de puntos
-// destacados, que guardaban hasta 3 en campos sueltos (highlight_1, etc).
-function parseHighlights(content, years) {
-  if (content.highlights_json) {
-    try {
-      const parsed = JSON.parse(content.highlights_json)
-      if (Array.isArray(parsed)) return parsed.filter(Boolean)
-    } catch {
-      // ignorar JSON inválido y seguir con los siguientes fallbacks
-    }
+// Solo muestra puntos destacados si se guardaron explícitamente desde el
+// editor de /admin — sin valores de respaldo, para no mostrar nada que el
+// usuario no haya puesto ahí.
+function parseHighlights(content) {
+  if (!content.highlights_json) return []
+  try {
+    const parsed = JSON.parse(content.highlights_json)
+    return Array.isArray(parsed) ? parsed.filter(Boolean) : []
+  } catch {
+    return []
   }
-  const legacy = [content.highlight_1, content.highlight_2, content.highlight_3].filter(Boolean)
-  if (legacy.length > 0) return legacy
-  return [
-    `Más de ${years} años de experiencia en carreteras, puentes y aeropuertos`,
-    'Experiencia en sector público y privado',
-    'Amplia red de contactos: concesionarias, Dirección de Vialidad y aeropuertos',
-  ]
 }
 
 export default function Nosotros() {
@@ -28,7 +21,7 @@ export default function Nosotros() {
   if (content.show_nosotros === '0') return null
   const img = assetUrl(content.about_image)
   const years = content.stat_1_value || '30+'
-  const highlights = parseHighlights(content, years)
+  const highlights = parseHighlights(content)
 
   return (
     <section id="nosotros" className="mx-auto max-w-6xl px-6 py-24 sm:py-28">

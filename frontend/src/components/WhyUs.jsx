@@ -6,55 +6,27 @@ import { cardWidthClass } from '../utils/adaptiveGrid'
 
 const ICONS = [AwardIcon, CompassIcon, ShieldIcon, ToolsIcon]
 
-const DEFAULT_PILLARS = [
-  {
-    title: 'Más de 30 años de experiencia',
-    text: 'En carreteras, puentes y aeropuertos, en el sector público y privado.',
-  },
-  {
-    title: 'Áreas de especialización',
-    text: 'Obras viales, aeropuertos y gran minería: movimientos de tierra, pavimentos y plantas de producción.',
-  },
-  {
-    title: 'Amplia red de gestión',
-    text: 'Contactos con Empresas Concesionarias, Dirección de Vialidad, aeropuertos, constructoras y transportistas.',
-  },
-  {
-    title: 'Asesoría y asistencia técnica',
-    text: 'Estudios de licitaciones, planificación de obras, laboratorio vial y auditorías.',
-  },
-]
-
-// Compatibilidad con sitios creados antes del editor dinámico de puntos,
-// que guardaban hasta 4 puntos en campos sueltos (whyus_pillar_1_title, etc).
-function legacyPillars(content) {
-  const list = [1, 2, 3, 4]
-    .map((n) => ({ title: content[`whyus_pillar_${n}_title`], text: content[`whyus_pillar_${n}_text`] }))
-    .filter((p) => p.title || p.text)
-  return list.length > 0 ? list : null
-}
-
+// Solo muestra puntos si se guardaron explícitamente desde el editor de
+// /admin — sin valores de respaldo, para no mostrar nada que el usuario no
+// haya puesto ahí.
 function parsePillars(content) {
-  if (content.whyus_pillars_json) {
-    try {
-      const parsed = JSON.parse(content.whyus_pillars_json)
-      if (Array.isArray(parsed) && parsed.length > 0) return parsed
-    } catch {
-      // ignorar JSON inválido y seguir con los siguientes fallbacks
-    }
+  if (!content.whyus_pillars_json) return []
+  try {
+    const parsed = JSON.parse(content.whyus_pillars_json)
+    return Array.isArray(parsed) ? parsed.filter((p) => p.title || p.text) : []
+  } catch {
+    return []
   }
-  return legacyPillars(content) || DEFAULT_PILLARS
 }
 
 export default function WhyUs() {
   const { content } = useContent()
-  if (content.show_whyus === '0') return null
-
   const pillars = parsePillars(content).map((p, i) => ({
     icon: ICONS[i % ICONS.length],
     title: p.title,
     text: p.text,
   }))
+  if (content.show_whyus === '0' || pillars.length === 0) return null
 
   return (
     <section className="bg-blueprint-grid relative overflow-hidden bg-slate-950 py-24 sm:py-28">
