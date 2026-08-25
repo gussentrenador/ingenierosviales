@@ -59,6 +59,14 @@ export default function ProjectsEditor({ value, onChange }) {
     update(projects.filter((_, i) => i !== index))
   }
 
+  const moveProject = (index, delta) => {
+    const target = index + delta
+    if (target < 0 || target >= projects.length) return
+    const next = [...projects]
+    ;[next[index], next[target]] = [next[target], next[index]]
+    update(next)
+  }
+
   const removeImage = (projectIndex, imageIndex) => {
     const next = projects.map((p, i) =>
       i === projectIndex ? { ...p, images: p.images.filter((_, j) => j !== imageIndex) } : p
@@ -91,15 +99,39 @@ export default function ProjectsEditor({ value, onChange }) {
         <div key={i} className="rounded-lg border border-slate-200 p-4">
           <div className="mb-3 flex items-center justify-between">
             <span className="text-sm font-semibold text-slate-500">Proyecto {i + 1}</span>
-            {projects.length > MIN_PROJECTS && (
-              <button
-                type="button"
-                onClick={() => removeProject(i)}
-                className="text-sm font-medium text-red-600 hover:text-red-700"
-              >
-                Eliminar
-              </button>
-            )}
+            <div className="flex items-center gap-3">
+              <div className="flex gap-1">
+                <button
+                  type="button"
+                  disabled={i === 0}
+                  onClick={() => moveProject(i, -1)}
+                  aria-label="Subir"
+                  title="Mover arriba"
+                  className="flex h-7 w-7 items-center justify-center rounded border border-slate-300 text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  ↑
+                </button>
+                <button
+                  type="button"
+                  disabled={i === projects.length - 1}
+                  onClick={() => moveProject(i, 1)}
+                  aria-label="Bajar"
+                  title="Mover abajo"
+                  className="flex h-7 w-7 items-center justify-center rounded border border-slate-300 text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  ↓
+                </button>
+              </div>
+              {projects.length > MIN_PROJECTS && (
+                <button
+                  type="button"
+                  onClick={() => removeProject(i)}
+                  className="text-sm font-medium text-red-600 hover:text-red-700"
+                >
+                  Eliminar
+                </button>
+              )}
+            </div>
           </div>
 
           <label className="block text-sm font-medium text-slate-700">Título</label>
