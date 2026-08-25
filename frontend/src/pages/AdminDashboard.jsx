@@ -23,7 +23,26 @@ export default function AdminDashboard() {
   const [saveState, setSaveState] = useState('idle') // idle | saving | ok | error
 
   useEffect(() => {
-    setValues(content)
+    // Migración en memoria: si el sitio tiene texto guardado desde antes del
+    // editor dinámico (highlight_1/2/3, whyus_pillar_N_title/text) pero aún no
+    // existe el JSON nuevo, lo precargamos aquí para que se vea y se pueda
+    // editar/quitar en el panel — si no, el editor se ve vacío aunque el sitio
+    // público siga mostrando ese texto antiguo (usa el mismo respaldo).
+    const migrated = { ...content }
+
+    if (!migrated.highlights_json) {
+      const legacyHighlights = [content.highlight_1, content.highlight_2, content.highlight_3].filter(Boolean)
+      if (legacyHighlights.length > 0) migrated.highlights_json = JSON.stringify(legacyHighlights)
+    }
+
+    if (!migrated.whyus_pillars_json) {
+      const legacyPillars = [1, 2, 3, 4]
+        .map((n) => ({ title: content[`whyus_pillar_${n}_title`], text: content[`whyus_pillar_${n}_text`] }))
+        .filter((p) => p.title || p.text)
+      if (legacyPillars.length > 0) migrated.whyus_pillars_json = JSON.stringify(legacyPillars)
+    }
+
+    setValues(migrated)
   }, [content])
 
   const setField = (key, value) => setValues((v) => ({ ...v, [key]: value }))
