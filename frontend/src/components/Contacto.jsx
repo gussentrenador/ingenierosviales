@@ -7,12 +7,14 @@ import Reveal from './Reveal'
 const INITIAL = { name: '', email: '', phone: '', message: '' }
 
 const inputClass =
-  'mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 transition-colors placeholder:text-slate-400 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20'
+  'mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 transition-colors placeholder:text-slate-400 focus:border-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/20'
 
 export default function Contacto() {
   const { content } = useContent()
   const [form, setForm] = useState(INITIAL)
   const [status, setStatus] = useState('idle') // idle | sending | ok | error
+
+  if (content.show_contacto === '0') return null
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
@@ -38,21 +40,22 @@ export default function Contacto() {
     <section id="contacto" className="bg-slate-50 py-24 sm:py-28">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2 lg:gap-20">
         <Reveal direction="left">
-          <span className="text-xs font-semibold uppercase tracking-widest text-amber-600">
-            Contacto
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+            {content.contacto_eyebrow || 'Contacto'}
           </span>
           <h2 className="mt-3 font-display text-3xl font-bold text-slate-900 sm:text-4xl">
-            Conversemos sobre tu proyecto
+            {content.contacto_heading || 'Conversemos sobre tu proyecto'}
           </h2>
           <p className="mt-4 max-w-md leading-relaxed text-slate-600">
-            Cuéntanos qué necesitas y te responderemos a la brevedad con una propuesta a la medida.
+            {content.contacto_subtitle ||
+              'Cuéntanos qué necesitas y te responderemos a la brevedad con una propuesta a la medida.'}
           </p>
 
           {info.length > 0 && (
             <dl className="mt-9 space-y-5">
               {info.map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-start gap-4">
-                  <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                  <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-[var(--accent-tint)] text-[var(--accent-dark)]">
                     <Icon className="h-5 w-5" />
                   </span>
                   <div>
@@ -116,7 +119,7 @@ export default function Contacto() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full rounded-lg bg-amber-500 px-4 py-3 font-semibold text-slate-950 shadow-md shadow-amber-500/20 transition-all hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-lg bg-[var(--accent)] px-4 py-3 font-semibold text-slate-950 shadow-md shadow-[var(--accent)]/20 transition-all hover:bg-[var(--accent-hover)] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
             </button>

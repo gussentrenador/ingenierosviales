@@ -3,29 +3,32 @@ require __DIR__ . '/bootstrap.php';
 
 // Debe coincidir con las keys definidas en frontend/src/content-schema.js
 const ALLOWED_KEYS = [
-    'company_name', 'company_tagline',
+    'company_name', 'company_tagline', 'accent_color',
     'section_order_json',
     'maintenance_mode', 'maintenance_title', 'maintenance_message',
     'hero_title', 'hero_subtitle', 'hero_image', 'show_navbar_cta', 'show_hero_cta',
+    'show_stats',
     'stat_1_value', 'stat_1_label',
     'stat_2_value', 'stat_2_label',
     'stat_3_value', 'stat_3_label',
     'stat_4_value', 'stat_4_label',
+    'show_nosotros', 'nosotros_eyebrow',
     'about_title', 'about_text', 'about_image',
     'highlight_1', 'highlight_2', 'highlight_3',
-    'whyus_title',
+    'show_whyus', 'whyus_eyebrow', 'whyus_title',
     'whyus_pillar_1_title', 'whyus_pillar_1_text',
     'whyus_pillar_2_title', 'whyus_pillar_2_text',
     'whyus_pillar_3_title', 'whyus_pillar_3_text',
     'whyus_pillar_4_title', 'whyus_pillar_4_text',
-    'services_json',
-    'projects_json',
-    'team_json',
+    'show_servicios', 'services_eyebrow', 'services_heading', 'services_json',
+    'show_proyectos', 'proyectos_eyebrow', 'proyectos_heading', 'proyectos_subtitle', 'projects_json',
+    'show_equipo', 'equipo_eyebrow', 'equipo_heading', 'team_json',
     'project_1_title', 'project_1_text', 'project_1_image',
     'project_2_title', 'project_2_text', 'project_2_image',
     'project_3_title', 'project_3_text', 'project_3_image',
+    'show_contacto', 'contacto_eyebrow', 'contacto_heading', 'contacto_subtitle',
     'contact_email', 'contact_cc_email', 'contact_phone', 'contact_address',
-    'footer_text',
+    'show_footer', 'footer_text',
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {

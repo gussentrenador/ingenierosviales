@@ -25,13 +25,13 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-28 pb-40 text-center">
-        <span className="animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber-400">
+        <span className="animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
           <CompassIcon className="h-4 w-4" />
           Ingeniería vial y obras viales
         </span>
 
         <h1
-          className="animate-fade-in-up drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] mx-auto mt-6 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight text-amber-400 sm:text-5xl"
+          className="animate-fade-in-up drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] mx-auto mt-6 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight text-[var(--accent)] sm:text-5xl"
           style={{ animationDelay: '120ms' }}
         >
           {content.hero_title || 'Ingeniería vial con precisión y resultados'}
@@ -52,7 +52,7 @@ export default function Hero() {
           {contactVisible && (
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 rounded-md bg-amber-500 px-7 py-3.5 font-semibold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-400 hover:shadow-amber-400/30"
+              className="group inline-flex items-center gap-2 rounded-md bg-[var(--accent)] px-7 py-3.5 font-semibold text-slate-950 shadow-lg shadow-[var(--accent)]/20 transition-all hover:bg-[var(--accent-hover)] hover:shadow-[var(--accent-hover)]/30"
             >
               Contacto
               <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -63,7 +63,7 @@ export default function Hero() {
             className={
               contactVisible
                 ? 'inline-flex items-center gap-2 rounded-md border border-white/25 px-7 py-3.5 font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/5'
-                : 'group inline-flex items-center gap-2 rounded-md bg-amber-500 px-7 py-3.5 font-semibold text-slate-950 shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-400 hover:shadow-amber-400/30'
+                : 'group inline-flex items-center gap-2 rounded-md bg-[var(--accent)] px-7 py-3.5 font-semibold text-slate-950 shadow-lg shadow-[var(--accent)]/20 transition-all hover:bg-[var(--accent-hover)] hover:shadow-[var(--accent-hover)]/30'
             }
           >
             Ver proyectos
@@ -77,7 +77,7 @@ export default function Hero() {
       <a
         href="#nosotros"
         aria-label="Bajar a la siguiente sección"
-        className="animate-bounce-y absolute bottom-24 left-1/2 z-10 hidden -translate-x-1/2 text-slate-400 hover:text-amber-400 sm:block"
+        className="animate-bounce-y absolute bottom-24 left-1/2 z-10 hidden -translate-x-1/2 text-slate-400 hover:text-[var(--accent)] sm:block"
       >
         <ChevronDownIcon className="h-7 w-7" />
       </a>

@@ -21,6 +21,10 @@ export function ContentProvider({ children }) {
     reload()
   }, [reload])
 
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', content.accent_color || '#f59e0b')
+  }, [content.accent_color])
+
   return (
     <ContentContext.Provider value={{ content, loading, error, reload }}>
       {children}

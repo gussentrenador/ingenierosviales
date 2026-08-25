@@ -5,6 +5,23 @@
   --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Color de énfasis del sitio: un solo valor editable desde /admin
+   (ver ContentContext.jsx), del que se derivan todos los tonos que se
+   usan en botones, íconos y acentos con color-mix(). Cambiar --accent
+   ahí recolorea toda la app pública de una sola vez. */
+:root {
+  --accent: #f59e0b;
+  --accent-hover: color-mix(in srgb, var(--accent) 88%, white);
+  --accent-dark: color-mix(in srgb, var(--accent) 75%, black);
+  --accent-tint: color-mix(in srgb, var(--accent) 12%, white);
+  --accent-tint-10: color-mix(in srgb, var(--accent) 10%, transparent);
+  --accent-tint-15: color-mix(in srgb, var(--accent) 15%, transparent);
+  --accent-tint-20: color-mix(in srgb, var(--accent) 20%, transparent);
+  --accent-tint-30: color-mix(in srgb, var(--accent) 30%, transparent);
+  --accent-tint-40: color-mix(in srgb, var(--accent) 40%, transparent);
+  --accent-tint-50: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
@@ -23,7 +40,7 @@ h4 {
 }
 
 ::selection {
-  background: #f59e0b;
+  background: var(--accent);
   color: #0b1220;
 }
 

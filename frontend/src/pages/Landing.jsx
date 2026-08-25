@@ -51,7 +51,7 @@ export default function Landing() {
         if (!Component) return null
         return <Component key={key} overlapHero={key === 'stats' && i === 0} />
       })}
-      <Footer />
+      {content.show_footer !== '0' && <Footer />}
     </div>
   )
 }

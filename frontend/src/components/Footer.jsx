@@ -33,7 +33,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2 text-sm">
             {LINKS.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="transition-colors hover:text-amber-400">
+                <a href={link.href} className="transition-colors hover:text-[var(--accent)]">
                   {link.label}
                 </a>
               </li>
@@ -47,7 +47,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm">
               {info.map(({ icon: Icon, value }, i) => (
                 <li key={i} className="flex items-center gap-2.5">
-                  <Icon className="h-4 w-4 flex-none text-amber-400" />
+                  <Icon className="h-4 w-4 flex-none text-[var(--accent)]" />
                   {value}
                 </li>
               ))}

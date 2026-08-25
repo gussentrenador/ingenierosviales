@@ -89,7 +89,8 @@ export default function AdminDashboard() {
                     field.type !== 'services' &&
                     field.type !== 'projects' &&
                     field.type !== 'team' &&
-                    field.type !== 'order' && (
+                    field.type !== 'order' &&
+                    field.type !== 'color' && (
                       <label className="block text-sm font-medium text-slate-700">{field.label}</label>
                     )}
 
@@ -170,6 +171,23 @@ export default function AdminDashboard() {
                       <SectionOrderEditor
                         value={values[field.key]}
                         onChange={(json) => setField(field.key, json)}
+                      />
+                    </div>
+                  )}
+
+                  {field.type === 'color' && (
+                    <div className="mt-1 flex items-center gap-3">
+                      <label className="text-sm font-medium text-slate-700">{field.label}</label>
+                      <input
+                        type="color"
+                        value={values[field.key] || '#f59e0b'}
+                        onChange={(e) => setField(field.key, e.target.value)}
+                        className="h-9 w-14 flex-none cursor-pointer rounded border border-slate-300 bg-white p-1"
+                      />
+                      <input
+                        value={values[field.key] || '#f59e0b'}
+                        onChange={(e) => setField(field.key, e.target.value)}
+                        className="w-28 rounded-md border border-slate-300 px-3 py-2 font-mono text-sm focus:border-sky-500 focus:outline-none"
                       />
                     </div>
                   )}

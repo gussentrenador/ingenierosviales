@@ -10,11 +10,11 @@ export default function MaintenancePage() {
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950/95 to-slate-950" />
 
       <div className="animate-fade-in-up relative z-10 max-w-lg">
-        <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-500/15 text-amber-400">
+        <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--accent-tint-15)] text-[var(--accent)]">
           <ToolsIcon className="h-8 w-8 animate-pulse" />
         </span>
 
-        <p className="mt-6 text-xs font-semibold uppercase tracking-widest text-amber-400">
+        <p className="mt-6 text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
           {companyName}
         </p>
 
@@ -30,7 +30,7 @@ export default function MaintenancePage() {
         {content.contact_email && (
           <a
             href={`mailto:${content.contact_email}`}
-            className="mt-8 inline-flex items-center gap-2 rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-amber-400/50 hover:text-amber-400"
+            className="mt-8 inline-flex items-center gap-2 rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-[var(--accent)]/50 hover:text-[var(--accent)]"
           >
             <MailIcon className="h-4 w-4" />
             {content.contact_email}

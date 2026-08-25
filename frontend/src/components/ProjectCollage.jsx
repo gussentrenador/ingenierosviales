@@ -48,7 +48,7 @@ export default function ProjectCollage({ images, onOpen }) {
           type="button"
           onClick={() => onOpen(i)}
           aria-label={`Ampliar foto ${i + 1} de ${images.length}`}
-          className="group/tile relative block overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-400"
+          className="group/tile relative block overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--accent)]"
           style={spans ? spans[i] : undefined}
         >
           <img src={src} alt="" className="h-full w-full object-cover transition-transform duration-300 group-hover/tile:scale-110" />

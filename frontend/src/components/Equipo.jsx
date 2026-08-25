@@ -33,7 +33,7 @@ export default function Equipo() {
     setExpanded(false)
   }, [index])
 
-  if (team.length === 0) return null
+  if (team.length === 0 || content.show_equipo === '0') return null
 
   const member = team[index]
   const photo = assetUrl(member.photo)
@@ -45,18 +45,18 @@ export default function Equipo() {
     <section id="equipo" className="bg-slate-50 py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-amber-600">
-            Nuestro equipo
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+            {content.equipo_eyebrow || 'Nuestro equipo'}
           </span>
           <h2 className="mt-3 font-display text-3xl font-bold text-slate-900 sm:text-4xl">
-            Profesionales a cargo
+            {content.equipo_heading || 'Profesionales a cargo'}
           </h2>
         </Reveal>
 
         <div className="relative mt-14">
           <Reveal key={index}>
             <div className="flex flex-col items-center gap-8 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm sm:flex-row sm:gap-12 sm:p-12">
-              <div className="h-36 w-36 flex-none overflow-hidden rounded-full bg-slate-100 ring-4 ring-amber-100 sm:h-44 sm:w-44">
+              <div className="h-36 w-36 flex-none overflow-hidden rounded-full bg-slate-100 ring-4 ring-[var(--accent-tint)] sm:h-44 sm:w-44">
                 {photo ? (
                   <img src={photo} alt={member.name} className="h-full w-full object-cover" />
                 ) : (
@@ -69,7 +69,7 @@ export default function Equipo() {
               <div className="flex-1 text-center sm:text-left">
                 <h3 className="font-display text-2xl font-bold text-slate-900">{member.name}</h3>
                 {member.profession && (
-                  <p className="mt-1 text-base font-medium text-amber-600">{member.profession}</p>
+                  <p className="mt-1 text-base font-medium text-[var(--accent)]">{member.profession}</p>
                 )}
                 {member.about && (
                   <div className="mt-4 leading-relaxed text-slate-600">
@@ -78,7 +78,7 @@ export default function Equipo() {
                       <button
                         type="button"
                         onClick={() => setExpanded((v) => !v)}
-                        className="mt-1 text-sm font-semibold text-amber-600 hover:text-amber-700"
+                        className="mt-1 text-sm font-semibold text-[var(--accent)] hover:text-[var(--accent-dark)]"
                       >
                         {expanded ? 'Leer menos' : 'Leer más'}
                       </button>
@@ -107,7 +107,7 @@ export default function Equipo() {
                 type="button"
                 aria-label="Profesional anterior"
                 onClick={prev}
-                className="flex h-10 w-10 flex-none items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-colors hover:border-amber-400 hover:text-amber-600"
+                className="flex h-10 w-10 flex-none items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
               >
                 <ChevronLeftIcon className="h-5 w-5" />
               </button>
@@ -120,7 +120,7 @@ export default function Equipo() {
                     aria-label={`Ver profesional ${i + 1}`}
                     onClick={() => setIndex(i)}
                     className={`h-2 rounded-full transition-all ${
-                      i === index ? 'w-6 bg-amber-500' : 'w-2 bg-slate-300 hover:bg-slate-400'
+                      i === index ? 'w-6 bg-[var(--accent)]' : 'w-2 bg-slate-300 hover:bg-slate-400'
                     }`}
                   />
                 ))}
@@ -130,7 +130,7 @@ export default function Equipo() {
                 type="button"
                 aria-label="Siguiente profesional"
                 onClick={next}
-                className="flex h-10 w-10 flex-none items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-colors hover:border-amber-400 hover:text-amber-600"
+                className="flex h-10 w-10 flex-none items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
               >
                 <ChevronRightIcon className="h-5 w-5" />
               </button>

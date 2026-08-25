@@ -5,6 +5,7 @@ import Reveal from './Reveal'
 
 export default function Nosotros() {
   const { content } = useContent()
+  if (content.show_nosotros === '0') return null
   const img = assetUrl(content.about_image)
   const years = content.stat_1_value || '30+'
 
@@ -28,7 +29,7 @@ export default function Nosotros() {
                 </div>
               )}
             </div>
-            <div className="absolute -bottom-6 -right-6 hidden rounded-xl bg-amber-500 px-6 py-4 text-slate-950 shadow-lg sm:block">
+            <div className="absolute -bottom-6 -right-6 hidden rounded-xl bg-[var(--accent)] px-6 py-4 text-slate-950 shadow-lg sm:block">
               <p className="font-display text-3xl font-extrabold leading-none">{years}</p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-wide">Años de trayectoria</p>
             </div>
@@ -36,8 +37,8 @@ export default function Nosotros() {
         </Reveal>
 
         <Reveal direction="right" delay={100}>
-          <span className="text-xs font-semibold uppercase tracking-widest text-amber-600">
-            Quiénes somos
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+            {content.nosotros_eyebrow || 'Quiénes somos'}
           </span>
           <h2 className="mt-3 font-display text-3xl font-bold text-slate-900 sm:text-4xl">
             {content.about_title || 'Sobre nosotros'}
@@ -50,7 +51,7 @@ export default function Nosotros() {
           <ul className="mt-7 space-y-3">
             {highlights.map((h, i) => (
               <li key={i} className="flex items-start gap-3 text-slate-700">
-                <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[var(--accent-tint)] text-[var(--accent-dark)]">
                   <CheckIcon className="h-3.5 w-3.5" />
                 </span>
                 {h}

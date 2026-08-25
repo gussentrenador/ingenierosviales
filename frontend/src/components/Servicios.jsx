@@ -43,17 +43,18 @@ function parseServices(content) {
 
 export default function Servicios() {
   const { content } = useContent()
+  if (content.show_servicios === '0') return null
   const services = parseServices(content)
 
   return (
     <section id="servicios" className="bg-slate-50 py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-amber-600">
-            Lo que hacemos
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+            {content.services_eyebrow || 'Lo que hacemos'}
           </span>
           <h2 className="mt-3 font-display text-3xl font-bold text-slate-900 sm:text-4xl">
-            Nuestros servicios
+            {content.services_heading || 'Nuestros servicios'}
           </h2>
         </Reveal>
 
@@ -67,7 +68,7 @@ export default function Servicios() {
                 className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
               >
                 <div className="group h-full rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-slate-900/10">
-                  <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-amber-100 text-amber-600 transition-colors group-hover:bg-amber-500 group-hover:text-slate-950">
+                  <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--accent-tint)] text-[var(--accent-dark)] transition-colors group-hover:bg-[var(--accent)] group-hover:text-slate-950">
                     <Icon className="h-7 w-7" />
                   </span>
                   <h3 className="mt-6 font-display text-xl font-semibold text-slate-900">{s.title}</h3>

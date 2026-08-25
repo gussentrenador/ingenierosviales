@@ -3,16 +3,17 @@ import { useContent } from '../context/ContentContext'
 import { MenuIcon, CloseIcon } from './icons'
 
 const LINKS = [
-  { href: '#nosotros', label: 'Nosotros' },
-  { href: '#servicios', label: 'Servicios' },
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '#nosotros', label: 'Nosotros', key: 'nosotros' },
+  { href: '#servicios', label: 'Servicios', key: 'servicios' },
+  { href: '#proyectos', label: 'Proyectos', key: 'proyectos' },
+  { href: '#contacto', label: 'Contacto', key: 'contacto' },
 ]
 
 export default function Navbar() {
   const { content } = useContent()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const links = LINKS.filter((link) => content[`show_${link.key}`] !== '0')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -36,9 +37,9 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <ul className="hidden gap-8 text-sm font-medium text-slate-200 sm:flex">
-          {LINKS.map((link) => (
+          {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="relative py-1 transition-colors hover:text-amber-400">
+              <a href={link.href} className="relative py-1 transition-colors hover:text-[var(--accent)]">
                 {link.label}
               </a>
             </li>
@@ -48,7 +49,7 @@ export default function Navbar() {
         {content.show_navbar_cta !== '0' && (
           <a
             href="#contacto"
-            className="hidden rounded-md bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition-all hover:bg-amber-400 hover:shadow-amber-500/30 sm:inline-block"
+            className="hidden rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition-all hover:bg-[var(--accent-hover)] hover:shadow-[var(--accent)]/30 sm:inline-block"
           >
             Contacto
           </a>
@@ -70,12 +71,12 @@ export default function Navbar() {
         }`}
       >
         <ul className="flex flex-col gap-1 px-6 pb-6 text-slate-200">
-          {LINKS.map((link) => (
+          {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-2 py-3 text-base font-medium transition-colors hover:bg-white/5 hover:text-amber-400"
+                className="block rounded-md px-2 py-3 text-base font-medium transition-colors hover:bg-white/5 hover:text-[var(--accent)]"
               >
                 {link.label}
               </a>
@@ -86,7 +87,7 @@ export default function Navbar() {
               <a
                 href="#contacto"
                 onClick={() => setOpen(false)}
-                className="mt-2 block rounded-md bg-amber-500 px-4 py-3 text-center font-semibold text-slate-950"
+                className="mt-2 block rounded-md bg-[var(--accent)] px-4 py-3 text-center font-semibold text-slate-950"
               >
                 Contacto
               </a>

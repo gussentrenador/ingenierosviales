@@ -16,6 +16,7 @@ const GRID_COLS = { 2: 'sm:grid-cols-2', 3: 'sm:grid-cols-3', 4: 'sm:grid-cols-4
 
 export default function StatsBar({ overlapHero = false }) {
   const { content } = useContent()
+  if (content.show_stats === '0') return null
 
   const stats = DEFAULTS.map((d, i) => {
     const value = content[`stat_${i + 1}_value`] || d?.value

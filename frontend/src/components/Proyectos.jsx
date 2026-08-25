@@ -63,16 +63,18 @@ export default function Proyectos() {
     })
   }
 
+  if (content.show_proyectos === '0') return null
+
   return (
     <section id="proyectos" className="mx-auto max-w-6xl px-6 py-24 sm:py-28">
       <Reveal className="mx-auto max-w-2xl text-center">
-        <span className="text-xs font-semibold uppercase tracking-widest text-amber-600">
-          Nuestro trabajo
+        <span className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+          {content.proyectos_eyebrow || 'Nuestro trabajo'}
         </span>
         <h2 className="mt-3 font-display text-3xl font-bold text-slate-900 sm:text-4xl">
-          Proyectos destacados
+          {content.proyectos_heading || 'Proyectos destacados'}
         </h2>
-        <p className="mt-3 text-slate-600">Imágenes de obras y tipo de proyectos</p>
+        <p className="mt-3 text-slate-600">{content.proyectos_subtitle || 'Imágenes de obras y tipo de proyectos'}</p>
       </Reveal>
 
       <div className="mt-14 flex flex-wrap justify-center gap-8">
