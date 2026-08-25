@@ -21,9 +21,9 @@ if ($file['error'] !== UPLOAD_ERR_OK) {
     json_response(['error' => $message], 400);
 }
 
-const MAX_BYTES = 5 * 1024 * 1024; // 5MB
+const MAX_BYTES = 100 * 1024 * 1024; // 100MB
 if ($file['size'] > MAX_BYTES) {
-    json_response(['error' => 'La imagen no puede superar 5MB'], 400);
+    json_response(['error' => 'La imagen no puede superar 100MB'], 400);
 }
 
 $imageInfo = getimagesize($file['tmp_name']);

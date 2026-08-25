@@ -59,7 +59,7 @@ export default function ImageField({ section, label, value, uploading, error, on
           </div>
 
           {error && <p className="mt-2 text-sm font-medium text-red-600">{error}</p>}
-          <p className="mt-2 text-xs text-slate-400">JPG, PNG, WEBP o GIF · máx. 5MB</p>
+          <p className="mt-2 text-xs text-slate-400">JPG, PNG, WEBP o GIF · máx. 100MB</p>
         </div>
       </div>
     </div>

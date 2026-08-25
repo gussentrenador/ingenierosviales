@@ -1,0 +1,25 @@
+# Respaldo de los límites de subida para hosts donde PHP corre como módulo de
+# Apache (mod_php) en vez de PHP-FPM/CGI. Los <IfModule> hacen que esto no
+# rompa nada si el módulo no está cargado (caso más común en cPanel moderno,
+# donde .user.ini es el que realmente aplica).
+<IfModule mod_php.c>
+  php_value upload_max_filesize 100M
+  php_value post_max_size 100M
+  php_value memory_limit 256M
+  php_value max_execution_time 300
+  php_value max_input_time 300
+</IfModule>
+<IfModule mod_php7.c>
+  php_value upload_max_filesize 100M
+  php_value post_max_size 100M
+  php_value memory_limit 256M
+  php_value max_execution_time 300
+  php_value max_input_time 300
+</IfModule>
+<IfModule mod_php8.c>
+  php_value upload_max_filesize 100M
+  php_value post_max_size 100M
+  php_value memory_limit 256M
+  php_value max_execution_time 300
+  php_value max_input_time 300
+</IfModule>

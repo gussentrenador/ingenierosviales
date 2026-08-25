@@ -106,7 +106,7 @@ export default function TeamEditor({ value, onChange }) {
                   e.target.value = ''
                 }}
               />
-              <p className="mt-1 text-xs text-slate-400">JPG, PNG, WEBP o GIF · máx. 5MB</p>
+              <p className="mt-1 text-xs text-slate-400">JPG, PNG, WEBP o GIF · máx. 100MB</p>
             </div>
           </div>
 
