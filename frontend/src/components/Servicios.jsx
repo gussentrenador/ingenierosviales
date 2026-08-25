@@ -2,6 +2,7 @@ import { useContent } from '../context/ContentContext'
 import { AwardIcon, ClockIcon, CompassIcon, ShieldIcon, ToolsIcon } from './icons'
 import Reveal from './Reveal'
 import { sanitizeHtml } from '../utils/sanitizeHtml'
+import { cardWidthClass } from '../utils/adaptiveGrid'
 
 const ICONS = [CompassIcon, ShieldIcon, ToolsIcon, AwardIcon, ClockIcon]
 
@@ -65,7 +66,7 @@ export default function Servicios() {
               <Reveal
                 key={i}
                 delay={i * 120}
-                className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
+                className={cardWidthClass(services.length)}
               >
                 <div className="group h-full rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-slate-900/10">
                   <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--accent-tint)] text-[var(--accent-dark)] transition-colors group-hover:bg-[var(--accent)] group-hover:text-slate-950">

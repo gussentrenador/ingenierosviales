@@ -2,6 +2,7 @@ import { useContent } from '../context/ContentContext'
 import Reveal from './Reveal'
 import { AwardIcon, CompassIcon, ShieldIcon, ToolsIcon } from './icons'
 import { sanitizeHtml } from '../utils/sanitizeHtml'
+import { cardWidthClass } from '../utils/adaptiveGrid'
 
 const ICONS = [AwardIcon, CompassIcon, ShieldIcon, ToolsIcon]
 
@@ -68,9 +69,9 @@ export default function WhyUs() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 flex flex-wrap justify-center gap-6">
           {pillars.map((p, i) => (
-            <Reveal key={i} delay={i * 100}>
+            <Reveal key={i} delay={i * 100} className={cardWidthClass(pillars.length)}>
               <div className="group h-full rounded-2xl border border-white/10 bg-white/5 p-7 transition-colors hover:border-[var(--accent)]/40 hover:bg-white/[0.08]">
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--accent-tint-15)] text-[var(--accent)] transition-colors group-hover:bg-[var(--accent)] group-hover:text-slate-950">
                   <p.icon className="h-6 w-6" />

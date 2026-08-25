@@ -5,6 +5,7 @@ import Reveal from './Reveal'
 import ProjectCollage from './ProjectCollage'
 import Lightbox from './Lightbox'
 import { sanitizeHtml } from '../utils/sanitizeHtml'
+import { cardWidthClass } from '../utils/adaptiveGrid'
 
 const DEFAULT_PROJECTS = [
   {
@@ -83,7 +84,7 @@ export default function Proyectos() {
           <Reveal
             key={i}
             delay={i * 120}
-            className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
+            className={cardWidthClass(projects.length)}
           >
             <div className="h-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg">
               <div className="aspect-[4/3] w-full">
