@@ -1,6 +1,7 @@
 import { useContent } from '../context/ContentContext'
 import Reveal from './Reveal'
 import { AwardIcon, CompassIcon, ShieldIcon, ToolsIcon } from './icons'
+import { sanitizeHtml } from '../utils/sanitizeHtml'
 
 const ICONS = [AwardIcon, CompassIcon, ShieldIcon, ToolsIcon]
 
@@ -23,14 +24,35 @@ const DEFAULT_PILLARS = [
   },
 ]
 
+// Compatibilidad con sitios creados antes del editor dinámico de puntos,
+// que guardaban hasta 4 puntos en campos sueltos (whyus_pillar_1_title, etc).
+function legacyPillars(content) {
+  const list = [1, 2, 3, 4]
+    .map((n) => ({ title: content[`whyus_pillar_${n}_title`], text: content[`whyus_pillar_${n}_text`] }))
+    .filter((p) => p.title || p.text)
+  return list.length > 0 ? list : null
+}
+
+function parsePillars(content) {
+  if (content.whyus_pillars_json) {
+    try {
+      const parsed = JSON.parse(content.whyus_pillars_json)
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed
+    } catch {
+      // ignorar JSON inválido y seguir con los siguientes fallbacks
+    }
+  }
+  return legacyPillars(content) || DEFAULT_PILLARS
+}
+
 export default function WhyUs() {
   const { content } = useContent()
   if (content.show_whyus === '0') return null
 
-  const pillars = DEFAULT_PILLARS.map((d, i) => ({
-    icon: ICONS[i],
-    title: content[`whyus_pillar_${i + 1}_title`] || d.title,
-    text: content[`whyus_pillar_${i + 1}_text`] || d.text,
+  const pillars = parsePillars(content).map((p, i) => ({
+    icon: ICONS[i % ICONS.length],
+    title: p.title,
+    text: p.text,
   }))
 
   return (
@@ -54,7 +76,10 @@ export default function WhyUs() {
                   <p.icon className="h-6 w-6" />
                 </span>
                 <h3 className="mt-5 font-display text-lg font-semibold text-white">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{p.text}</p>
+                <div
+                  className="rich-content mt-2 text-sm leading-relaxed text-slate-400"
+                  dangerouslySetInnerHTML={{ __html: sanitizeHtml(p.text) }}
+                />
               </div>
             </Reveal>
           ))}

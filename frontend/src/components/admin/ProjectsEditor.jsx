@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import api, { assetUrl } from '../../api/client'
+import RichTextEditor from './RichTextEditor'
 
 const MAX_PROJECTS = 6
 const MIN_PROJECTS = 1
@@ -108,12 +109,13 @@ export default function ProjectsEditor({ value, onChange }) {
             className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 focus:border-sky-500 focus:outline-none"
           />
           <label className="mt-3 block text-sm font-medium text-slate-700">Descripción</label>
-          <textarea
-            rows={2}
-            value={project.text}
-            onChange={(e) => updateField(i, 'text', e.target.value)}
-            className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 focus:border-sky-500 focus:outline-none"
-          />
+          <div className="mt-1">
+            <RichTextEditor
+              value={project.text}
+              onChange={(html) => updateField(i, 'text', html)}
+              placeholder="Escribe la descripción. Usa el botón de lista para viñetas, como en un Word."
+            />
+          </div>
 
           <p className="mt-3 text-sm font-medium text-slate-700">
             Fotos ({project.images.length}/{MAX_IMAGES}) — se muestran como carrusel en el sitio

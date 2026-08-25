@@ -4,6 +4,7 @@ import { assetUrl } from '../api/client'
 import Reveal from './Reveal'
 import ProjectCollage from './ProjectCollage'
 import Lightbox from './Lightbox'
+import { sanitizeHtml } from '../utils/sanitizeHtml'
 
 const DEFAULT_PROJECTS = [
   {
@@ -93,7 +94,12 @@ export default function Proyectos() {
               </div>
               <div className="p-5">
                 <h3 className="font-display text-lg font-semibold text-slate-900">{p.title}</h3>
-                {p.text && <p className="mt-2 text-sm leading-relaxed text-slate-600">{p.text}</p>}
+                {p.text && (
+                  <div
+                    className="rich-content mt-2 text-sm leading-relaxed text-slate-600"
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(p.text) }}
+                  />
+                )}
               </div>
             </div>
           </Reveal>

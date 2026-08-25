@@ -3,17 +3,32 @@ import { assetUrl } from '../api/client'
 import { CheckIcon } from './icons'
 import Reveal from './Reveal'
 
+// Compatibilidad con sitios creados antes del editor dinámico de puntos
+// destacados, que guardaban hasta 3 en campos sueltos (highlight_1, etc).
+function parseHighlights(content, years) {
+  if (content.highlights_json) {
+    try {
+      const parsed = JSON.parse(content.highlights_json)
+      if (Array.isArray(parsed)) return parsed.filter(Boolean)
+    } catch {
+      // ignorar JSON inválido y seguir con los siguientes fallbacks
+    }
+  }
+  const legacy = [content.highlight_1, content.highlight_2, content.highlight_3].filter(Boolean)
+  if (legacy.length > 0) return legacy
+  return [
+    `Más de ${years} años de experiencia en carreteras, puentes y aeropuertos`,
+    'Experiencia en sector público y privado',
+    'Amplia red de contactos: concesionarias, Dirección de Vialidad y aeropuertos',
+  ]
+}
+
 export default function Nosotros() {
   const { content } = useContent()
   if (content.show_nosotros === '0') return null
   const img = assetUrl(content.about_image)
   const years = content.stat_1_value || '30+'
-
-  const highlights = [
-    content.highlight_1 || `Más de ${years} años de experiencia en carreteras, puentes y aeropuertos`,
-    content.highlight_2 || 'Experiencia en sector público y privado',
-    content.highlight_3 || 'Amplia red de contactos: concesionarias, Dirección de Vialidad y aeropuertos',
-  ]
+  const highlights = parseHighlights(content, years)
 
   return (
     <section id="nosotros" className="mx-auto max-w-6xl px-6 py-24 sm:py-28">
@@ -48,16 +63,18 @@ export default function Nosotros() {
               'Profesionales del área vial con más de 30 años de experiencia en carreteras, puentes y aeropuertos, en el sector público y privado. Liderados por Orlando Maluenda Rojas, Ingeniero Civil Químico y Consultor Líder, ofrecemos asesorías en licitaciones, planificación y gestión de obras, además de asistencia técnica en plantas de áridos, plantas asfálticas, hormigones y laboratorio vial.'}
           </p>
 
-          <ul className="mt-7 space-y-3">
-            {highlights.map((h, i) => (
-              <li key={i} className="flex items-start gap-3 text-slate-700">
-                <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[var(--accent-tint)] text-[var(--accent-dark)]">
-                  <CheckIcon className="h-3.5 w-3.5" />
-                </span>
-                {h}
-              </li>
-            ))}
-          </ul>
+          {highlights.length > 0 && (
+            <ul className="mt-7 space-y-3">
+              {highlights.map((h, i) => (
+                <li key={i} className="flex items-start gap-3 text-slate-700">
+                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[var(--accent-tint)] text-[var(--accent-dark)]">
+                    <CheckIcon className="h-3.5 w-3.5" />
+                  </span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          )}
         </Reveal>
       </div>
     </section>
