@@ -107,6 +107,34 @@ h4 {
   animation: bounce-y 2s ease-in-out infinite;
 }
 
+/* Franja de logos de clientes (Clientes.jsx): la pista se duplica y se
+   desplaza -50% para dar la ilusión de un recorrido infinito sin salto. */
+@keyframes clientes-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-clientes-scroll {
+  animation-name: clientes-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.animate-clientes-scroll:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-clientes-scroll {
+    animation: none;
+  }
+}
+.clientes-fade-edges {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
 /* Fondo tipo "plano técnico": grilla sutil, útil en secciones oscuras para dar carácter de ingeniería. */
 .bg-blueprint-grid {
   background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
