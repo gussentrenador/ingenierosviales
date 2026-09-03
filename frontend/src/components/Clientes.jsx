@@ -6,7 +6,7 @@ import Reveal from './Reveal'
 // vez de mostrarse estática — con pocos logos no hace falta animar nada.
 const SCROLL_THRESHOLD = 6
 // Segundos por logo: la velocidad se mantiene pareja sin importar cuántos haya.
-const SECONDS_PER_LOGO = 3
+const SECONDS_PER_LOGO = 4
 
 function parseClients(raw) {
   if (!raw) return []
@@ -20,22 +20,22 @@ function parseClients(raw) {
 
 function ClientLogo({ client }) {
   return (
-    <div className="flex w-24 flex-none flex-col items-center gap-2 sm:w-28">
-      <div className="flex h-12 w-full items-center justify-center sm:h-16">
+    <div className="flex flex-none flex-col items-center gap-3 px-2">
+      <div className="flex h-20 items-center justify-center sm:h-28">
         {client.logo ? (
           <img
             src={assetUrl(client.logo)}
             alt={client.name}
-            className="max-h-12 max-w-full object-contain grayscale transition-all duration-300 hover:grayscale-0 sm:max-h-16"
+            className="h-full max-w-[11rem] object-contain grayscale transition-all duration-300 hover:grayscale-0 sm:max-w-[16rem]"
           />
         ) : (
-          <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-slate-100 text-xs text-slate-400 sm:h-14 sm:w-14">
+          <div className="flex h-16 w-16 flex-none items-center justify-center rounded-full bg-slate-100 text-lg text-slate-400 sm:h-20 sm:w-20">
             {(client.name || '?').slice(0, 1).toUpperCase()}
           </div>
         )}
       </div>
       {client.name && (
-        <p className="max-w-full truncate text-center text-xs font-medium text-slate-500 sm:text-sm">
+        <p className="whitespace-nowrap text-center text-sm font-medium text-slate-500 sm:text-base">
           {client.name}
         </p>
       )}
@@ -70,8 +70,8 @@ export default function Clientes() {
           <div
             className={
               shouldScroll
-                ? 'animate-clientes-scroll flex items-start gap-10 sm:gap-14'
-                : 'flex flex-wrap items-start justify-center gap-x-10 gap-y-8 px-6 sm:gap-x-14'
+                ? 'animate-clientes-scroll flex items-start gap-12 sm:gap-20'
+                : 'flex flex-wrap items-start justify-center gap-x-12 gap-y-10 px-6 sm:gap-x-20'
             }
             style={shouldScroll ? { width: 'max-content', animationDuration: `${duration}s` } : undefined}
           >
