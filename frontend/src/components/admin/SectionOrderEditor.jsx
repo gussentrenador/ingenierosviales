@@ -1,4 +1,13 @@
-export const DEFAULT_SECTION_ORDER = ['stats', 'nosotros', 'whyus', 'servicios', 'proyectos', 'equipo', 'contacto']
+export const DEFAULT_SECTION_ORDER = [
+  'stats',
+  'nosotros',
+  'whyus',
+  'servicios',
+  'proyectos',
+  'clientes',
+  'equipo',
+  'contacto',
+]
 
 const LABELS = {
   stats: 'Estadísticas (franja de confianza)',
@@ -6,6 +15,7 @@ const LABELS = {
   whyus: 'Por qué elegirnos',
   servicios: 'Servicios',
   proyectos: 'Proyectos',
+  clientes: 'Clientes recientes',
   equipo: 'Equipo (LinkedIn)',
   contacto: 'Contacto',
 }

@@ -23,6 +23,7 @@ const ALLOWED_KEYS = [
     'whyus_pillars_json',
     'show_servicios', 'services_eyebrow', 'services_heading', 'services_json',
     'show_proyectos', 'proyectos_eyebrow', 'proyectos_heading', 'proyectos_subtitle', 'projects_json',
+    'show_clientes', 'clientes_eyebrow', 'clientes_heading', 'clientes_json',
     'show_equipo', 'equipo_eyebrow', 'equipo_heading', 'team_json',
     'project_1_title', 'project_1_text', 'project_1_image',
     'project_2_title', 'project_2_text', 'project_2_image',

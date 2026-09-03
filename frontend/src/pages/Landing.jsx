@@ -5,6 +5,7 @@ import Nosotros from '../components/Nosotros'
 import WhyUs from '../components/WhyUs'
 import Servicios from '../components/Servicios'
 import Proyectos from '../components/Proyectos'
+import Clientes from '../components/Clientes'
 import Equipo from '../components/Equipo'
 import Contacto from '../components/Contacto'
 import Footer from '../components/Footer'
@@ -18,6 +19,7 @@ const SECTION_COMPONENTS = {
   whyus: WhyUs,
   servicios: Servicios,
   proyectos: Proyectos,
+  clientes: Clientes,
   equipo: Equipo,
   contacto: Contacto,
 }

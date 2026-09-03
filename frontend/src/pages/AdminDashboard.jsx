@@ -11,6 +11,7 @@ import TeamEditor from '../components/admin/TeamEditor'
 import SectionOrderEditor from '../components/admin/SectionOrderEditor'
 import WhyUsEditor from '../components/admin/WhyUsEditor'
 import ListEditor from '../components/admin/ListEditor'
+import ClientesEditor from '../components/admin/ClientesEditor'
 
 export default function AdminDashboard() {
   const { content, reload } = useContent()
@@ -112,7 +113,8 @@ export default function AdminDashboard() {
                     field.type !== 'team' &&
                     field.type !== 'order' &&
                     field.type !== 'color' &&
-                    field.type !== 'pillars' && (
+                    field.type !== 'pillars' &&
+                    field.type !== 'clients' && (
                       <label className="block text-sm font-medium text-slate-700">{field.label}</label>
                     )}
 
@@ -200,6 +202,15 @@ export default function AdminDashboard() {
                   {field.type === 'list' && (
                     <div className="mt-1">
                       <ListEditor
+                        value={values[field.key]}
+                        onChange={(json) => setField(field.key, json)}
+                      />
+                    </div>
+                  )}
+
+                  {field.type === 'clients' && (
+                    <div className="mt-1">
+                      <ClientesEditor
                         value={values[field.key]}
                         onChange={(json) => setField(field.key, json)}
                       />

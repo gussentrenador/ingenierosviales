@@ -123,6 +123,19 @@ export const CONTENT_SCHEMA = [
     ],
   },
   {
+    section: 'Clientes recientes',
+    fields: [
+      {
+        key: 'show_clientes',
+        label: 'Mostrar esta sección',
+        type: 'checkbox',
+      },
+      { key: 'clientes_eyebrow', label: 'Texto superior (eyebrow)', type: 'text' },
+      { key: 'clientes_heading', label: 'Título de la sección', type: 'text' },
+      { key: 'clientes_json', label: 'Clientes (hasta 12, con logo)', type: 'clients' },
+    ],
+  },
+  {
     section: 'Equipo (LinkedIn)',
     fields: [
       {
